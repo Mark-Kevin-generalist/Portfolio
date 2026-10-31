@@ -50,6 +50,7 @@ body{overflow-x:clip}
 .car{position:relative}.cb{position:absolute;top:130px;z-index:2;width:42px;height:42px;border-radius:50%;border:1px solid var(--acc);background:var(--bg);color:var(--pop);font-size:22px;line-height:1;cursor:pointer}.cb.p{left:6px}.cb.n{right:6px}
 .mic{width:44px;height:44px;flex:0 0 44px;border-radius:50%;border:1px solid var(--acc);background:var(--card);cursor:pointer;font-size:18px}.mic.rec{background:var(--pop);animation:pl 1s infinite}@keyframes pl{50%{opacity:.5}}
 #ctopic{padding:11px 18px;border-radius:99px;border:1px solid var(--acc);background:var(--card);color:var(--ink);font:inherit}#contact .btn{margin:18px 10px 0 0}
+#cmsg{width:100%;margin-top:16px;padding:12px 16px;border-radius:14px;border:1px solid var(--acc);background:var(--card);color:var(--ink);font:inherit;resize:vertical}
 .wpill{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:12;padding:10px 18px;border:0;border-radius:99px;background:var(--pop);color:#fff;font:500 13px Jost,system-ui,sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
 @media (prefers-reduced-motion:reduce){.rv{transform:translateX(28px)}}
 @media(max-width:700px){.hero{grid-template-columns:1fr}.hero img{order:-1;max-width:240px}nav{gap:14px;font-size:11px}.cg{grid-template-columns:1fr}.gal figure,.gal .wide{flex-basis:86%}.gal img{height:300px}}
@@ -169,7 +170,9 @@ body{overflow-x:clip}
 <p id="na" class="note">The assistant is available when this page is opened inside Claude.</p></section>
 <section id="contact" hidden><h2>Let’s work together</h2><p class="lead">Choose what you’d like to discuss and send me a ready-made message.</p>
 <div class="row" style="flex-wrap:wrap"><input id="cname" placeholder="Your name (optional)" autocomplete="off"><select id="ctopic"><option>A full-time or permanent role</option><option>A freelance task</option><option>An interview invitation</option><option>Something else</option></select></div>
-<a class="btn" id="cemail" target="_blank" rel="noopener">Email me</a><a class="btn" id="cwa" target="_blank" rel="noopener">WhatsApp me</a><a class="btn" href="https://www.linkedin.com/in/mark-kevin-inumerables-696220173" target="_blank" rel="noopener">LinkedIn</a></section>
+<a class="btn" id="cemail" target="_blank" rel="noopener">Email me</a><a class="btn" id="cgmail" target="_blank" rel="noopener">Open in Gmail</a><a class="btn" id="cwa" target="_blank" rel="noopener">WhatsApp me</a><a class="btn" href="https://www.linkedin.com/in/mark-kevin-inumerables-696220173" target="_blank" rel="noopener">LinkedIn</a>
+<p class="note" style="margin-top:20px">Or reach me directly: <b>sacredmaui66@gmail.com</b> · WhatsApp <b>+63 966 412 5330</b></p>
+<textarea id="cmsg" rows="3" readonly aria-label="Your ready-made message"></textarea><button class="btn" id="ccopy">Copy message</button></section>
 <footer>Mark Kevin Inumerables · Available for remote work</footer>
 </div><script>
 (function(){
@@ -179,7 +182,7 @@ var log=document.getElementById('log'),q=document.getElementById('q'),send=docum
 var sample=null,busy=false,hist=[];
 function add(c,t){var d=document.createElement('div');d.className='m '+c;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
 var spk=document.getElementById('speak');
-function say(t){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=1;speechSynthesis.speak(u)}catch(e){}}
+function say(t){if(window.speakText)window.speakText(t)}
 async function ask(text,viaVoice){
   if(busy||!text.trim())return;busy=true;send.disabled=true;q.value='';
   add('u',text);var out=add('a','Thinking…');
@@ -235,8 +238,10 @@ sec.hidden=false;
 var topic=document.getElementById('ctopic'),nm=document.getElementById('cname'),em=document.getElementById('cemail'),wa=document.getElementById('cwa');
 function upd(){var n=nm.value.trim(),m='Hi Mark, '+(n?'this is '+n+'. ':'')+'I found your portfolio and I would like to talk to you about: '+topic.value+'. When are you available for a quick chat?';
 em.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Inquiry: '+topic.value)+'&body='+encodeURIComponent(m);
-wa.href='https://wa.me/'+WA+'?text='+encodeURIComponent(m)}
+wa.href='https://wa.me/'+WA+'?text='+encodeURIComponent(m);document.getElementById('cgmail').href='https://mail.google.com/mail/?view=cm&fs=1&to='+EMAIL+'&su='+encodeURIComponent('Inquiry: '+topic.value)+'&body='+encodeURIComponent(m);document.getElementById('cmsg').value=m}
 em.hidden=!EMAIL;wa.hidden=!WA;
+var cb=document.getElementById('ccopy'),cm=document.getElementById('cmsg');
+cb.addEventListener('click',function(){var ok=function(){cb.textContent='Copied!';setTimeout(function(){cb.textContent='Copy message'},1800)};try{navigator.clipboard.writeText(cm.value).then(ok,function(){cm.select();try{document.execCommand('copy')}catch(x){}ok()})}catch(e){cm.select();try{document.execCommand('copy')}catch(x){}ok()}});
 [topic,nm].forEach(function(e){e.addEventListener('input',upd)});upd();
 })();
 </script><script>
@@ -246,8 +251,15 @@ var b=document.getElementById('welcome'),done=false,playing=false;
 if(!b)return;
 if(!('speechSynthesis' in window)){b.hidden=true;return;}
 function reset(){playing=false;b.textContent='🔊 Welcome message'}
-function stop(){try{speechSynthesis.cancel()}catch(e){}reset()}
-function play(){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(TXT);u.lang='en-US';u.onend=reset;u.onerror=reset;playing=true;b.textContent='⏹ Stop';speechSynthesis.speak(u)}catch(e){reset()}}
+var aud=null,fb=false;
+function pickVoice(){var vs=speechSynthesis.getVoices().filter(function(x){return /^en/i.test(x.lang)});var rx=[/natural/i,/neural/i,/aria|jenny|ava|emma|sonia|libby/i,/samantha|karen|serena|zira|google us english|google uk english female/i];for(var i=0;i<rx.length;i++){var m=vs.filter(function(x){return rx[i].test(x.name)});if(m.length)return m[0]}return vs[0]||null}
+try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=function(){}}catch(e){}
+function speak(t,end){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t),v=pickVoice();if(v){u.voice=v;u.lang=v.lang}else{u.lang='en-US'}u.rate=1;u.pitch=1.12;u.onend=end;u.onerror=end;speechSynthesis.speak(u)}catch(e){if(end)end()}}
+window.speakText=function(t){speak(t,function(){})};
+function stop(){try{if(aud){aud.pause();aud=null}speechSynthesis.cancel()}catch(e){}reset()}
+function play(){playing=true;b.textContent='⏹ Stop';fb=false;
+function fallback(){if(fb)return;fb=true;aud=null;speak(TXT,reset)}
+try{aud=new Audio('welcome.mp3');aud.onended=reset;aud.onerror=fallback;var p=aud.play();if(p&&p.catch)p.catch(fallback)}catch(e){fallback()}}
 b.addEventListener('click',function(e){e.stopPropagation();done=true;if(playing){stop()}else{play()}});
 function first(e){if(done)return;done=true;if(e.target&&e.target.closest&&e.target.closest('#ask,#contact,button,a,input,select'))return;play()}
 ['click','keydown'].forEach(function(ev){document.addEventListener(ev,first)});
