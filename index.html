@@ -455,7 +455,7 @@ draw();$("#cmX").onclick=closeCert;
 cm.addEventListener("click",function(e){if(e.target===cm)closeCert()});
 addEventListener("scroll",hidePop,{passive:true});
 /* ===== AI assistant ===== */
-var CHAT_ENDPOINT=""; /* paste your Cloudflare Worker URL here for full AI answers (see worker.js) */
+var CHAT_ENDPOINT="https://personal-assistant.sacredmaui66.workers.dev"; /* paste your Cloudflare Worker URL here for full AI answers (see worker.js) */
 var chat=$("#chat"),msgs=$("#msgs"),ci=$("#ci"),hist=[],voiceOn=true,greeted=false,voice=null;
 var KB=[
 [["responsib","accountab","critical","deadline","pressure","reliable","ownership"],"Mark sees himself as the person responsible, not just an assistant. After ten years of critical operations and deadlines that cannot move, he treats anything missed as his to fix, and he brings that ownership to remote teams."],
