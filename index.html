@@ -39,7 +39,12 @@ h2{font-size:clamp(40px,5.5vw,68px);margin-bottom:26px}
 .ticks s{flex:1;height:14px;border-radius:2px;background:rgba(226,191,122,.16);transition:background .2s}
 .ticks s.f{background:var(--gold)}
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.25fr) auto 250px;gap:4vw;align-items:center}
+.hero{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.25fr) auto 250px;gap:4vw;align-items:center}
+.hero-embers{position:absolute;inset:-24px;z-index:0;overflow:hidden;pointer-events:none}
+.hero>div:not(.hero-embers),.hero>.portrait-stage,.hero>.hl{position:relative;z-index:1}
+.hero-embers .orbit-particle{position:absolute;z-index:0;width:1.5px;height:1.5px;border-radius:50%;background:rgba(255,211,158,.8);box-shadow:0 0 3px 1px rgba(255,174,112,.18);opacity:0;animation:ember-drift 38s linear infinite;will-change:transform,opacity}
+.hero-embers .p1{left:3%;top:88%;animation-duration:43s;animation-delay:-7s}.hero-embers .p2{left:12%;top:68%;animation-duration:37s;animation-delay:-19s}.hero-embers .p3{left:21%;top:92%;animation-duration:46s;animation-delay:-31s}.hero-embers .p4{left:29%;top:58%;animation-duration:40s;animation-delay:-13s}.hero-embers .p5{left:38%;top:82%;animation-duration:49s;animation-delay:-26s}.hero-embers .p6{left:47%;top:66%;animation-duration:42s;animation-delay:-9s}.hero-embers .p7{left:55%;top:94%;animation-duration:45s;animation-delay:-34s}.hero-embers .p8{left:63%;top:73%;animation-duration:39s;animation-delay:-21s}.hero-embers .p9{left:72%;top:87%;animation-duration:47s;animation-delay:-15s}.hero-embers .p10{left:81%;top:61%;animation-duration:41s;animation-delay:-29s}.hero-embers .p11{left:91%;top:90%;animation-duration:44s;animation-delay:-11s}.hero-embers .p12{left:97%;top:49%;animation-duration:48s;animation-delay:-37s}.hero-embers .p13{left:7%;top:35%;animation-duration:50s;animation-delay:-23s}.hero-embers .p14{left:25%;top:25%;animation-duration:43s;animation-delay:-17s}.hero-embers .p15{left:43%;top:42%;animation-duration:46s;animation-delay:-32s}.hero-embers .p16{left:60%;top:31%;animation-duration:39s;animation-delay:-5s}.hero-embers .p17{left:77%;top:21%;animation-duration:47s;animation-delay:-27s}.hero-embers .p18{left:94%;top:33%;animation-duration:42s;animation-delay:-14s}.hero-embers .p19{left:34%;top:10%;animation-duration:51s;animation-delay:-39s}.hero-embers .p20{left:68%;top:8%;animation-duration:45s;animation-delay:-18s}
+@keyframes ember-drift{0%{transform:translate3d(0,14px,0);opacity:0}12%{opacity:.32}42%{opacity:.2}57%{opacity:0}68%{opacity:0}77%{opacity:.24}92%{opacity:.14}100%{transform:translate3d(2px,-70px,0);opacity:0}}
 h1{font-size:clamp(36px,4.3vw,60px);letter-spacing:-.01em}
 h1 .ln{display:block;overflow:hidden}
 h1 .ln span{display:block;transform:translateY(108%);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
@@ -185,6 +190,7 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
  
  
  <div class="hero">
+  <div class="hero-embers" aria-hidden="true"><span class="orbit-particle p13"></span><span class="orbit-particle p14"></span><span class="orbit-particle p15"></span><span class="orbit-particle p16"></span><span class="orbit-particle p17"></span><span class="orbit-particle p18"></span><span class="orbit-particle p19"></span><span class="orbit-particle p20"></span></div>
   <div>
    <h1><span class="ln"><span>Not just an assistant.</span></span><span class="ln"><span class="hi">The one responsible</span></span><span class="ln"><span>when deadlines can&rsquo;t slip.</span></span></h1>
    <p class="who"><b>Mark Kevin Inumerables</b><span>Administration · Customer Support · Procurement · AI Workflows</span><span>Available for remote work, UTC+8</span></p>
