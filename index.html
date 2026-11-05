@@ -204,12 +204,21 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
  .pill a::after{display:none}
  .dock{left:50%;width:min(640px,calc(100% - 28px))}
 }
+
+/* Single continuous progress indicator for the entire page */
+.dock{gap:12px;width:min(640px,calc(100% - 28px));padding:12px 16px}
+.dock .site-progress{height:5px;flex:1;overflow:hidden;border-radius:999px;background:rgba(226,191,122,.16)}
+.dock .site-progress span{display:block;width:0;height:100%;border-radius:inherit;background:var(--gold);box-shadow:0 0 9px rgba(226,191,122,.35);transition:width .12s linear}
+.dock #siteProgressLabel{min-width:38px;text-align:right;font:500 12px var(--sans);color:var(--mute);font-variant-numeric:tabular-nums}
+.mh .btn{margin-left:auto}
+@media(min-width:901px){.dock{left:calc(50% + 117px);width:min(640px,calc(100% - 290px))}}
+@media(max-width:900px){.dock{left:50%;width:min(640px,calc(100% - 28px))}}
 </style>
 </head>
 <body>
 <nav class="pill" aria-label="Sections"><a href="#top" data-nav="Home">Home</a><a href="#work" data-nav="Why me">Why me</a><a href="#process" data-nav="How I work">How I work</a><a href="#experience" data-nav="Experience">Experience</a><a href="#story" data-nav="My story">My story</a><a href="#certificates" data-nav="Certificates">Certificates</a><a href="#contact" data-nav="Contact">Contact</a></nav>
 <div class="top-r"><a class="btn w" href="mailto:sacredmaui66@gmail.com">Email me <i>&rarr;</i></a><button class="btn" id="askTop" type="button">Ask AI</button><a class="btn" href="tel:+639664125330">Call</a></div>
-<div class="dock" aria-hidden="true"><b id="dl">Home</b><div class="ticks" id="ticks"></div><a class="btn w" href="mailto:sacredmaui66@gmail.com" tabindex="-1">Email me <i>&rarr;</i></a></div>
+<div class="dock" role="progressbar" aria-label="Overall website reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="site-progress"><span id="siteProgressFill"></span></div><b id="siteProgressLabel">0%</b></div>
 
 <header class="panel" id="top" data-sec="Home">
  
@@ -322,7 +331,7 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 
 <div class="pop" id="pop" aria-hidden="true"><iframe id="popF" title="Certificate preview" tabindex="-1"></iframe><span>Click to read the full document</span></div>
 <div class="modal" id="cm" role="dialog" aria-modal="true" aria-label="Certificate" hidden>
- <div class="mbox"><div class="mh"><b id="cmT"></b><a class="btn" id="cmO" target="_blank" rel="noopener">Open in new tab</a><button class="btn" id="cmX" type="button">Close</button></div><iframe id="cmF" title="Certificate document"></iframe></div>
+ <div class="mbox"><div class="mh"><b id="cmT"></b><button class="btn" id="cmX" type="button">Close</button></div><iframe id="cmF" title="Certificate document"></iframe></div>
 </div>
 
 <aside class="chat" id="chat" aria-label="AI assistant" hidden>
@@ -392,16 +401,18 @@ function draw(tabChange){
 draw();
 /* process */
 
-/* dock + nav */
-var tk=$("#ticks");for(var i=0;i<24;i++)tk.appendChild(document.createElement("s"));
-var secs=document.querySelectorAll("[data-sec]"),links=document.querySelectorAll("[data-nav]"),dl=$("#dl");
+/* overall site progress + active section navigation */
+var progressDock=$(".dock"),progressFill=$("#siteProgressFill"),progressLabel=$("#siteProgressLabel");
+var secs=document.querySelectorAll("[data-sec]"),links=document.querySelectorAll("[data-nav]");
 function upd(){
- var vh=innerHeight,mid=vh/2,cur=secs[0],p=0;
- secs.forEach(function(s){var r=s.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid){cur=s;var span=r.height-vh;p=span>0?Math.min(1,Math.max(0,-r.top/span)):Math.min(1,Math.max(0,(mid-r.top)/r.height))}});
- dl.textContent=cur.dataset.sec;
- var f=Math.round(p*24);Array.prototype.forEach.call(tk.children,function(t,k){t.classList.toggle("f",k<f)});
+ var max=document.documentElement.scrollHeight-innerHeight;
+ var progress=max>0?Math.min(100,Math.max(0,(scrollY/max)*100)):100;
+ progressFill.style.width=progress+"%";
+ progressDock.setAttribute("aria-valuenow",String(Math.round(progress)));
+ progressLabel.textContent=Math.round(progress)+"%";
+ var mid=innerHeight/2,cur=secs[0];
+ secs.forEach(function(section){var r=section.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid)cur=section});
  links.forEach(function(a){a.classList.toggle("on",a.dataset.nav===cur.dataset.sec||(cur.id==="gallery"&&a.dataset.nav==="Experience"))});
-
 }
 addEventListener("scroll",upd,{passive:true});addEventListener("resize",upd);upd();
 /* reveal from the right */
@@ -456,16 +467,16 @@ var G=[
 ]}
 ];
 var gi=0,tabs=$("#ctabs"),grid=$("#cgrid"),pop=$("#pop"),popF=$("#popF"),cm=$("#cm"),cmF=$("#cmF"),last=null,tm=null,hov=matchMedia("(hover:hover)").matches;
-function url(f){return "https://raw.githubusercontent.com/Mark-Kevin-generalist/Portfolio/portfolio-targeted-updates/assets/certs/"+f+".pdf"}
+function url(f){return "assets/certs/"+f+".pdf"}
 function buildTabs(){tabs.innerHTML="";G.forEach(function(g,k){var b=document.createElement("button");b.className="tab";b.type="button";b.innerHTML=g.n+"<sup>"+g.i.length+"</sup>";b.onclick=function(){gi=k;draw()};tabs.appendChild(b)})}
 buildTabs();
 function showPop(el,f){if(!hov)return;clearTimeout(tm);tm=setTimeout(function(){var r=el.getBoundingClientRect(),w=300,h=400,x=r.right+14;if(x+w>innerWidth-10)x=r.left-w-14;if(x<10)x=Math.max(10,Math.min(innerWidth-w-10,r.left));var y=Math.min(Math.max(10,r.top-40),innerHeight-h-10);pop.style.left=x+"px";pop.style.top=y+"px";var u=url(f)+"#toolbar=0&navpanes=0&view=FitH";if(popF.getAttribute("src")!==u)popF.setAttribute("src",u);pop.classList.add("on")},140)}
 function hidePop(){clearTimeout(tm);pop.classList.remove("on")}
-function openCert(t,f,btn){hidePop();last=btn;$("#cmT").textContent=t;$("#cmO").href=url(f);cmF.setAttribute("src",url(f)+"#view=FitH");cm.hidden=false;document.body.style.overflow="hidden";$("#cmX").focus()}
+function openCert(t,f,btn){hidePop();last=btn;$("#cmT").textContent=t;cmF.setAttribute("src",url(f)+"#toolbar=0&navpanes=0&view=FitH");cm.hidden=false;document.body.style.overflow="hidden";$("#cmX").focus()}
 function closeCert(){cm.hidden=true;cmF.removeAttribute("src");document.body.style.overflow="";if(last)last.focus()}
 function draw(){Array.prototype.forEach.call(tabs.children,function(b,k){b.classList.toggle("on",k===gi)});grid.innerHTML="";
  G[gi].i.forEach(function(c){var b=document.createElement("button"),pr=c[3]==="p";b.type="button";b.className="cert"+(pr?" p":"");b.innerHTML="<span class='ic"+(pr?" p":"")+"'>"+(pr?"SOON":"PDF")+"</span><span><b></b><small></small></span>";b.querySelector("b").textContent=c[0];b.querySelector("small").textContent=c[1];
-  if(pr){b.setAttribute("aria-disabled","true")}else{b.onmouseenter=function(){showPop(b,c[2])};b.onmouseleave=hidePop;b.onfocus=function(){showPop(b,c[2])};b.onblur=hidePop;b.onclick=function(){openCert(c[0],c[2],b)}}
+  if(pr){b.setAttribute("aria-disabled","true")}else{b.onclick=function(){openCert(c[0],c[2],b)}}
   grid.appendChild(b)})}
 draw();$("#cmX").onclick=closeCert;
 cm.addEventListener("click",function(e){if(e.target===cm)closeCert()});
