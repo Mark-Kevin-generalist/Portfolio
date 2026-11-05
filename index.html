@@ -180,45 +180,18 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .detail .biz b{color:var(--gold);font-weight:500}
 .cert.p{cursor:default;border-style:dashed}.cert.p:hover{transform:none;border-color:var(--line);background:rgba(0,0,0,.25)}.cert .ic.p{color:var(--rose);border-color:var(--rose)}
 
-/* Portfolio layout inspired by the reference: fixed left rail + full-width panels */
-@media(min-width:901px){
- body{padding:12px 12px 12px 246px}
- .pill{top:24px;left:22px;right:auto;transform:none;width:204px;display:flex;flex-direction:column;align-items:stretch;gap:5px;padding:16px 12px;border-radius:18px;background:rgba(15,8,9,.88);box-shadow:0 14px 40px rgba(0,0,0,.22)}
- .pill::before{content:"MARK KEVIN  /  PORTFOLIO";display:block;padding:3px 10px 14px;color:var(--gold);font-size:10px;font-weight:600;letter-spacing:.16em}
- .pill a{display:flex;align-items:center;min-height:40px;padding:9px 12px;border-radius:10px;font-size:14px;color:var(--mute)}
- .pill a::after{content:"";width:5px;height:5px;margin-left:auto;border-radius:1px;background:var(--gold);opacity:.55}
- .pill a:hover,.pill a.on{background:rgba(226,191,122,.1);color:var(--cream)}
- .pill a.on::after{opacity:1;box-shadow:0 0 9px rgba(226,191,122,.55)}
- .top-r{top:24px;right:30px}
- .dock{left:calc(50% + 117px);width:min(640px,calc(100% - 290px))}
- .panel{min-height:calc(100vh - 24px);margin-bottom:12px;padding:92px clamp(34px,4.5vw,76px) 104px;border-radius:20px}
- .panel.fit{display:flex;flex-direction:column;justify-content:center}
- .hero{min-height:calc(100vh - 220px)}
- .hero-embers{inset:-10px}
-}
-@media(max-width:900px){
- body{padding:10px}
- .pill{top:12px;left:50%;right:auto;transform:translateX(-50%);width:auto;max-width:calc(100% - 24px);flex-direction:row;align-items:center;gap:4px;padding:5px;border-radius:999px}
- .pill::before{display:none}
- .pill a{min-height:0;padding:7px 12px;border-radius:999px}
- .pill a::after{display:none}
- .dock{left:50%;width:min(640px,calc(100% - 28px))}
-}
 
-/* Single continuous progress indicator for the entire page */
-.dock{gap:12px;width:min(640px,calc(100% - 28px));padding:12px 16px}
+/* Bottom dock: whole-page scroll progress + Email Me action */
+.dock{left:50%;width:min(640px,calc(100% - 28px));gap:14px;padding:10px 10px 10px 18px}
 .dock .site-progress{height:5px;flex:1;overflow:hidden;border-radius:999px;background:rgba(226,191,122,.16)}
 .dock .site-progress span{display:block;width:0;height:100%;border-radius:inherit;background:var(--gold);box-shadow:0 0 9px rgba(226,191,122,.35);transition:width .12s linear}
-.dock #siteProgressLabel{min-width:38px;text-align:right;font:500 12px var(--sans);color:var(--mute);font-variant-numeric:tabular-nums}
-.mh .btn{margin-left:auto}
-@media(min-width:901px){.dock{left:calc(50% + 117px);width:min(640px,calc(100% - 290px))}}
-@media(max-width:900px){.dock{left:50%;width:min(640px,calc(100% - 28px))}}
+.dock #siteProgressLabel{min-width:34px;text-align:right;font:500 12px var(--sans);color:var(--mute);font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
 <nav class="pill" aria-label="Sections"><a href="#top" data-nav="Home">Home</a><a href="#work" data-nav="Why me">Why me</a><a href="#process" data-nav="How I work">How I work</a><a href="#experience" data-nav="Experience">Experience</a><a href="#story" data-nav="My story">My story</a><a href="#certificates" data-nav="Certificates">Certificates</a><a href="#contact" data-nav="Contact">Contact</a></nav>
 <div class="top-r"><a class="btn w" href="mailto:sacredmaui66@gmail.com">Email me <i>&rarr;</i></a><button class="btn" id="askTop" type="button">Ask AI</button><a class="btn" href="tel:+639664125330">Call</a></div>
-<div class="dock" role="progressbar" aria-label="Overall website reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="site-progress"><span id="siteProgressFill"></span></div><b id="siteProgressLabel">0%</b></div>
+<div class="dock" role="progressbar" aria-label="Overall website reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="site-progress"><span id="siteProgressFill"></span></div><b id="siteProgressLabel">0%</b><a class="btn w" href="mailto:sacredmaui66@gmail.com">Email me <i>&rarr;</i></a></div>
 
 <header class="panel" id="top" data-sec="Home">
  
