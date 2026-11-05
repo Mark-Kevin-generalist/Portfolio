@@ -186,12 +186,39 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .dock .site-progress{height:5px;flex:1;overflow:hidden;border-radius:999px;background:rgba(226,191,122,.16)}
 .dock .site-progress span{display:block;width:0;height:100%;border-radius:inherit;background:var(--gold);box-shadow:0 0 9px rgba(226,191,122,.35);transition:width .12s linear}
 .dock #siteProgressLabel{min-width:34px;text-align:right;font:500 12px var(--sans);color:var(--mute);font-variant-numeric:tabular-nums}
+
+/* Email app chooser */
+.email-choice[hidden]{display:none}
+.email-choice{position:fixed;inset:0;z-index:10050;display:grid;place-items:center;padding:20px;background:rgba(8,7,10,.78);backdrop-filter:blur(10px)}
+.email-choice-card{width:min(420px,100%);padding:26px;border:1px solid rgba(226,191,122,.35);border-radius:20px;background:#171318;color:var(--cream);box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.email-choice-card h3{margin:0 0 8px;font-family:inherit;color:var(--cream)}
+.email-choice-card p{margin:0 0 18px;color:rgba(255,245,230,.72);font-size:.94rem}
+.email-choice-actions{display:grid;gap:10px}
+.email-choice-actions a,.email-choice-actions button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 14px;border:1px solid rgba(226,191,122,.35);border-radius:999px;background:rgba(226,191,122,.08);color:var(--cream);font:inherit;text-decoration:none;cursor:pointer}
+.email-choice-actions a:hover,.email-choice-actions button:hover{background:rgba(226,191,122,.17)}
+.email-choice-close{margin-top:14px;width:100%;border:0;background:transparent;color:rgba(255,245,230,.65);padding:8px;cursor:pointer;font:inherit}
+
 </style>
 </head>
 <body>
+
+<div class="email-choice" id="emailChoice" hidden role="dialog" aria-modal="true" aria-labelledby="emailChoiceTitle">
+ <div class="email-choice-card">
+  <h3 id="emailChoiceTitle">Email Mark</h3>
+  <p>Choose how you'd like to send your message.</p>
+  <div class="email-choice-actions">
+   <a id="emailGmail" href="https://mail.google.com/mail/?view=cm&fs=1&to=sacredmaui66%40gmail.com&su=Hello%20Mark&body=Hi%20Mark%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">Gmail</a>
+   <a id="emailOutlook" href="https://outlook.office.com/mail/deeplink/compose?to=sacredmaui66%40gmail.com&subject=Hello%20Mark&body=Hi%20Mark%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." target="_blank" rel="noopener">Outlook</a>
+   <a href="mailto:sacredmaui66@gmail.com?subject=Hello%20Mark&body=Hi%20Mark%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk.">Default email app</a>
+   <button type="button" id="copyEmail">Copy email address</button>
+  </div>
+  <button type="button" class="email-choice-close" id="emailChoiceClose">Cancel</button>
+ </div>
+</div>
+
 <nav class="pill" aria-label="Sections"><a href="#top" data-nav="Home">Home</a><a href="#work" data-nav="Why me">Why me</a><a href="#process" data-nav="How I work">How I work</a><a href="#experience" data-nav="Experience">Experience</a><a href="#story" data-nav="My story">My story</a><a href="#certificates" data-nav="Certificates">Certificates</a><a href="#contact" data-nav="Contact">Contact</a></nav>
-<div class="top-r"><a class="btn w" href="mailto:sacredmaui66@gmail.com">Email me <i>&rarr;</i></a><button class="btn" id="askTop" type="button">Ask AI</button><a class="btn" href="tel:+639664125330">Call</a></div>
-<div class="dock" role="progressbar" aria-label="Overall website reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="site-progress"><span id="siteProgressFill"></span></div><b id="siteProgressLabel">0%</b><a class="btn w" href="mailto:sacredmaui66@gmail.com">Email me <i>&rarr;</i></a></div>
+<div class="top-r"><a class="btn w" href="#" data-email-chooser>Email me <i>&rarr;</i></a><button class="btn" id="askTop" type="button">Ask AI</button><a class="btn" href="tel:+639664125330">Call</a></div>
+<div class="dock" role="progressbar" aria-label="Overall website reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="site-progress"><span id="siteProgressFill"></span></div><b id="siteProgressLabel">0%</b><a class="btn w" href="#" data-email-chooser>Email me <i>&rarr;</i></a></div>
 
 <header class="panel" id="top" data-sec="Home">
  
@@ -318,7 +345,7 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
  <h2 class="rv">Hiring for admin or virtual assistant work?<br><span class="hi">Let&rsquo;s talk.</span></h2>
  <p class="rv">Based in the Philippines (UTC+8). Ready to start right away.</p>
  <div class="cta rv">
-  <a class="btn w" href="mailto:sacredmaui66@gmail.com?subject=Hello%20Mark&body=Hi%20Mark%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk.">sacredmaui66@gmail.com <i>&rarr;</i></a>
+  <a class="btn w" href="#" data-email-chooser>sacredmaui66@gmail.com <i>&rarr;</i></a>
   <a class="btn" href="https://api.whatsapp.com/send?phone=639664125330&text=Hi%20Mark%2C%20I%20saw%20your%20portfolio.">WhatsApp</a>
   <a class="btn" href="https://linkedin.com/in/mark-kevin-inumerables-696220173">LinkedIn</a>
   <a class="btn" href="assets/Mark-Kevin-Resume.pdf">Download resume</a>
@@ -497,5 +524,33 @@ $("#vc").onclick=function(){voiceOn=!voiceOn;this.textContent=voiceOn?"Voice on"
 addEventListener("keydown",function(e){if(e.key==="Escape"){if(!cm.hidden)closeCert();else if(!chat.hidden)closeChat()}});
 })();
 </script>
+
+<script>
+(function(){
+  var chooser=document.getElementById("emailChoice");
+  if(!chooser)return;
+  var close=function(){chooser.hidden=true;};
+  document.querySelectorAll("[data-email-chooser]").forEach(function(link){
+    link.addEventListener("click",function(event){
+      event.preventDefault();
+      chooser.hidden=false;
+      document.getElementById("emailChoiceClose").focus();
+    });
+  });
+  document.getElementById("emailChoiceClose").addEventListener("click",close);
+  chooser.addEventListener("click",function(event){if(event.target===chooser)close();});
+  document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!chooser.hidden)close();});
+  document.getElementById("copyEmail").addEventListener("click",async function(){
+    var button=this;
+    try{
+      await navigator.clipboard.writeText("sacredmaui66@gmail.com");
+      button.textContent="Email address copied!";
+    }catch(error){
+      button.textContent="Copy unavailable — sacredmaui66@gmail.com";
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
