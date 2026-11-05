@@ -111,6 +111,14 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .stepper span.on{color:var(--cream)}.stepper span.on::before{background:var(--gold)}
 /* experience */
 .exp{display:grid;grid-template-columns:1.2fr 1fr;gap:5vw}
+.story-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.95fr);gap:5vw;align-items:center}
+.story-copy h2{margin-bottom:16px}
+.eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.story-lead{font:500 25px/1.25 var(--serif);color:var(--cream);margin:0 0 18px}
+.story-copy>p:not(.eyebrow){max-width:62ch;color:var(--mute);margin:0 0 14px;font-size:16px}
+.story-media{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#080506;box-shadow:0 20px 55px rgba(0,0,0,.28)}
+.story-media video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#080506}
+.story-media p{padding:12px 16px;color:var(--mute);font-size:14px}
 .job{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:20px 0;border-top:1px solid var(--line)}
 .job time{color:var(--gold);font-size:15px}.job h3{font-size:26px}.job small{display:block;color:var(--mute);margin:2px 0 6px}.job p{color:var(--mute);font-size:15.5px}
 .chips{display:flex;flex-wrap:wrap;gap:9px}.chips span{padding:7px 15px;border:1px solid var(--line);border-radius:999px;font-size:14.5px}
@@ -121,7 +129,7 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 @media(max-width:900px){
  .pill a:not(.on){display:none}.top-r .btn:not(.w){display:none}
  .hero{grid-template-columns:1fr}.photo{order:-1;width:210px}.hl{grid-template-columns:1fr 1fr}.particle,.corner{display:none}
- .work,.exp,.stick{grid-template-columns:1fr}.list{grid-template-columns:1fr 1fr}.chain{display:none}
+ .work,.exp,.stick,.story-grid{grid-template-columns:1fr}.list{grid-template-columns:1fr 1fr}.chain{display:none}
  .stepper span{font-size:11px}.job{grid-template-columns:1fr;gap:2px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -163,12 +171,12 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 </style>
 </head>
 <body>
-<nav class="pill" aria-label="Sections"><a href="#top" data-nav="Home">Home</a><a href="#work" data-nav="Why me">Why me</a><a href="#process" data-nav="How I work">How I work</a><a href="#experience" data-nav="Experience">Experience</a><a href="#certificates" data-nav="Certificates">Certificates</a><a href="#contact" data-nav="Contact">Contact</a></nav>
+<nav class="pill" aria-label="Sections"><a href="#top" data-nav="Home">Home</a><a href="#work" data-nav="Why me">Why me</a><a href="#process" data-nav="How I work">How I work</a><a href="#experience" data-nav="Experience">Experience</a><a href="#story" data-nav="My story">My story</a><a href="#certificates" data-nav="Certificates">Certificates</a><a href="#contact" data-nav="Contact">Contact</a></nav>
 <div class="top-r"><a class="btn w" href="mailto:sacredmaui66@gmail.com">Email me <i>&rarr;</i></a><button class="btn" id="askTop" type="button">Ask AI</button><a class="btn" href="tel:+639664125330">Call</a></div>
 <div class="dock" aria-hidden="true"><b id="dl">Home</b><div class="ticks" id="ticks"></div><a class="btn w" href="mailto:sacredmaui66@gmail.com" tabindex="-1">Email me <i>&rarr;</i></a></div>
 
 <header class="panel" id="top" data-sec="Home">
- <video autoplay muted loop playsinline preload="metadata" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16"><source src="bg-portrait.mp4" type="video/mp4"></video>
+ 
  <span class="particle" style="top:20%;left:42%"></span><span class="particle" style="top:34%;right:26%;animation-delay:-3s"></span><span class="particle" style="top:70%;left:46%;animation-delay:-5s"></span>
  <div class="hero">
   <div>
@@ -182,8 +190,8 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
     <a class="social-link" href="https://linkedin.com/in/mark-kevin-inumerables-696220173" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5.2 3.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.3 9.5h3.8V21H3.3V9.5Zm6.1 0H13v1.6h.1c.5-.9 1.7-1.9 3.6-1.9 3.9 0 4.6 2.5 4.6 5.7V21h-3.8v-5.4c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9.4V9.5Z"/></svg></a>
     <a class="social-link" href="https://api.whatsapp.com/send?phone=639664125330" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9 9 0 0 1-4.6-1.3l-.3-.2-3.5.9.9-3.4-.2-.4A9 9 0 1 1 12 21Zm5-6.7c-.3-.2-1.7-.9-2-1s-.5-.2-.7.2-.8 1-.9 1.2-.3.2-.6.1a7.3 7.3 0 0 1-2.2-1.4 8.3 8.3 0 0 1-1.5-1.9c-.2-.3 0-.5.1-.6l.5-.6.2-.5-.1-.5c-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1.1 1.1-1.1 2.6 1.1 3 1.2 3.2a11.4 11.4 0 0 0 4.4 4c.6.3 1.1.5 1.5.6.6.2 1.2.2 1.7.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4s-.2-.2-.5-.3Z"/></svg></a>
     <a class="social-link" href="https://github.com/Mark-Kevin-generalist" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .8a11.2 11.2 0 0 0-3.5 21.8c.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.8 2.1 3.5 1.5.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.3.8 1 .8 2v3c0 .3.2.7.8.6A11.2 11.2 0 0 0 12 .8Z"/></svg></a>
-    <span class="social-link" aria-label="Facebook profile link pending" title="Facebook link pending"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21h3.4Z"/></svg></span>
-    <span class="social-link" aria-label="Instagram profile link pending" title="Instagram link pending"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.8-3.3a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg></a>
+    <a class="social-link" href="https://www.facebook.com/markkevin.inumerables" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21h3.4Z"/></svg></span>
+    <a class="social-link" href="https://www.instagram.com/markkevininumerables/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.8-3.3a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg></a>
   </div>
   </div>
   <div class="photo"><img src="assets/portrait-cutout.png" alt="Portrait of Mark Kevin Inumerables" onerror="this.outerHTML='<div class=ph>MK</div>'"></div>
@@ -228,6 +236,26 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
    <div class="job rv"><time>2006 to 2011</time><div><h3>Associate Degree in Marine Transportation</h3><small>John B. Lacson Colleges Foundation</small></div></div>
   </div>
   <div class="rv"><h3 class="s">Tools and skills</h3><div class="chips"><span>Google Workspace</span><span>Excel</span><span>Word</span><span>Business email</span><span>Slack</span><span>Hubstaff</span><span>IMOS</span><span>AWT DRS</span><span>NavInsight / S-Insight</span><span>Microsoft Copilot</span><span>Claude (learning)</span><span>GoHighLevel (learning)</span><span>AI workflow mapping</span><span>Email automation concepts</span><span>Customer support</span><span>Collections follow-up</span><span>Sales administration</span><span>Procurement coordination</span><span>Supplier quotation comparison</span><span>Payroll data preparation</span><span>Document control</span><span>Reporting and reconciliation</span><span>Vendor communication</span><span>CRM data management</span><span>AI data annotation</span></div></div>
+ </div>
+</section>
+
+<section class="panel fit" id="story" data-sec="My story">
+ <div class="story-grid">
+  <div class="story-copy">
+   <p class="eyebrow">A little about me</p>
+   <h2 class="rv">My story</h2>
+   <p class="story-lead rv">From shipboard operations to helping businesses work smarter.</p>
+   <p class="rv">My career began in customer service and collections, where I learned how to communicate clearly, handle different situations and follow through with people. In 2016, I moved into ship administration, supporting vessel operations and coordinating with ship and shore teams across different ports and time zones.</p>
+   <p class="rv">Over the years, I have handled time-sensitive documentation, daily reports, crew records, supplier quotations, procurement coordination, accounts support and operational follow-ups. Working at sea taught me to stay organised, pay attention to detail and remain dependable when deadlines cannot move.</p>
+   <p class="rv">Today, I am bringing that experience into remote administration and virtual assistance while developing my skills in AI-assisted workflows and data quality work. I am interested in practical ways to connect tools, simplify repetitive tasks and give teams more time to focus on their customers and business.</p>
+  </div>
+  <div class="story-media rv">
+   <video controls muted playsinline preload="metadata" aria-label="A short video introducing my work and portfolio">
+    <source src="bg-portrait.mp4" type="video/mp4">
+    Your browser does not support the video element.
+   </video>
+   <p>My work, experience and the systems I enjoy building.</p>
+  </div>
  </div>
 </section>
 
