@@ -333,14 +333,45 @@ $("#nx").onclick=function(){go(1)};$("#pv").onclick=function(){go(-1)};
 var $=function(q){return document.querySelector(q)};
 /* ===== Certificates: edit names, details and file names here. PDFs go in assets/certs/ ===== */
 var G=[
-{n:"English",i:[["EF SET English Certificate","C2 Proficient, 73/100","ef-set"],["Speechace English Screening","Score 7.8 / 9","speechace"]]},
-{n:"AI and tools",i:[["Mercor: Introduction to Agents","Course certificate","mercor-intro-to-agents"],["Introduction to Copilot","Course completed","introduction-to-copilot"],["Claude training","In training now","","p"],["GoHighLevel training","In training now","","p"]]},
-{n:"Assessments",i:[["IQ International Certificate","IQ score 123","iq-international"],["Predictive Index Behavioral Report","Work style report","predictive-index"],["MISC E-Appraisal, July 2026","Performance appraisal","misc-e-appraisal"]]},
-{n:"Seagull: people and management",i:[["Conflict Management","Completed 13 Oct 2026 \u00b7 Score 85%","conflict-management"],["Crisis Management","Completed 2 Apr 2021 \u00b7 Score 100%","crisis-management"],["Human Resources Management","Completed 24 Jun 2023 \u00b7 Score 100%","hr-management"],["Human Relations","Seagull training","human-relations"],["Diversity, Equality and Inclusion in the Marine Industry","Completed 14 Jul 2026 \u00b7 Score 80%","diversity-equality-inclusion"],["Sexual Harassment Prevention","Completed 15 Aug 2023 \u00b7 Score 100%","sexual-harassment-prevention"]]},
-{n:"Seagull: safety and compliance",i:[["Cyber Security: Awareness","Completed 16 Jan 2021 \u00b7 Score 90%","cyber-security-awareness"],["Cyber Security: Common Threats and Traps","Completed 1 Jan 2019 \u00b7 Score 100%","cyber-security-common-threats"],["Cyber Security: Good Practices","Completed 1 Jan 2019 \u00b7 Score 100%","cyber-security-good-practices"],["ISM Code","Three versions: 2016, 2019 and 2023","ism-code"],["US Port State Control (Edition 2)","Completed 15 Jul 2023 \u00b7 Score 100%","port-state-control"],["Occupational Health and Safety Management System","Completed 17 Jul 2023 \u00b7 Score 100%","ohs-management"],["Fatigue Management","Completed 3 May 2018 \u00b7 Score 90%","fatigue-management"],["Export Control","Seagull training","export-control"],["ISO 14001","Seagull training","iso-14001"],["Medical Care","Seagull training","medical-care"],["Search and Rescue","Seagull training","search-and-rescue"],["Personal Safety","Seagull training","personal-safety"]]}];
-G.unshift({n:"All",i:[].concat.apply([],G.map(function(g){return g.i}))});
+{n:"All",i:[
+["Conflict Management","Completed 13 Oct 2026 · Score 85%","conflict-management"],
+["Crisis Management","Completed 2 Apr 2021 · Score 100%","crisis-management"],
+["Human Resources Management","Completed 24 Jun 2023 · Score 100%","hr-management"],
+["Diversity, Equality and Inclusion in the Marine Industry","Completed 14 Jul 2026 · Score 80%","diversity-equality-inclusion"],
+["Sexual Harassment Prevention","Completed 15 Aug 2023 · Score 100%","sexual-harassment-prevention"],
+["Cyber Security: Awareness","Completed 16 Jan 2021 · Score 90%","cyber-security-awareness"],
+["Cyber Security: Common Threats and Traps","Completed 1 Jan 2019 · Score 100%","cyber-security-common-threats"],
+["Cyber Security: Good Practices","Completed 1 Jan 2019 · Score 100%","cyber-security-good-practices"],
+["ISM Code","Three versions: 2016, 2019 and 2023","ism-code"],
+["US Port State Control (Edition 2)","Completed 15 Jul 2023 · Score 100%","port-state-control"],
+["Occupational Health and Safety Management System","Completed 17 Jul 2023 · Score 100%","ohs-management"],
+["Fatigue Management","Completed 3 May 2018 · Score 90%","fatigue-management"],
+["Claude training","In training now","","p"],
+["GoHighLevel training","In training now","","p"]
+]},
+{n:"People and management",i:[
+["Conflict Management","Completed 13 Oct 2026 · Score 85%","conflict-management"],
+["Crisis Management","Completed 2 Apr 2021 · Score 100%","crisis-management"],
+["Human Resources Management","Completed 24 Jun 2023 · Score 100%","hr-management"],
+["Diversity, Equality and Inclusion in the Marine Industry","Completed 14 Jul 2026 · Score 80%","diversity-equality-inclusion"],
+["Sexual Harassment Prevention","Completed 15 Aug 2023 · Score 100%","sexual-harassment-prevention"]
+]},
+{n:"Safety and compliance",i:[
+["Cyber Security: Awareness","Completed 16 Jan 2021 · Score 90%","cyber-security-awareness"],
+["Cyber Security: Common Threats and Traps","Completed 1 Jan 2019 · Score 100%","cyber-security-common-threats"],
+["Cyber Security: Good Practices","Completed 1 Jan 2019 · Score 100%","cyber-security-good-practices"],
+["ISM Code","Three versions: 2016, 2019 and 2023","ism-code"],
+["US Port State Control (Edition 2)","Completed 15 Jul 2023 · Score 100%","port-state-control"],
+["Occupational Health and Safety Management System","Completed 17 Jul 2023 · Score 100%","ohs-management"],
+["Fatigue Management","Completed 3 May 2018 · Score 90%","fatigue-management"]
+]},
+{n:"AI and tools",i:[
+["Claude training","In training now","","p"],
+["GoHighLevel training","In training now","","p"]
+]}
+];
 var gi=0,tabs=$("#ctabs"),grid=$("#cgrid"),pop=$("#pop"),popF=$("#popF"),cm=$("#cm"),cmF=$("#cmF"),last=null,tm=null,hov=matchMedia("(hover:hover)").matches;
-function url(f){return "assets/certs/"+f+".pdf"}
+function url(f){return "https://raw.githubusercontent.com/Mark-Kevin-generalist/Portfolio/main/assets/certs/"+f+".pdf"}
 function buildTabs(){tabs.innerHTML="";G.forEach(function(g,k){var b=document.createElement("button");b.className="tab";b.type="button";b.innerHTML=g.n+"<sup>"+g.i.length+"</sup>";b.onclick=function(){gi=k;draw()};tabs.appendChild(b)})}
 buildTabs();
 function showPop(el,f){if(!hov)return;clearTimeout(tm);tm=setTimeout(function(){var r=el.getBoundingClientRect(),w=300,h=400,x=r.right+14;if(x+w>innerWidth-10)x=r.left-w-14;if(x<10)x=Math.max(10,Math.min(innerWidth-w-10,r.left));var y=Math.min(Math.max(10,r.top-40),innerHeight-h-10);pop.style.left=x+"px";pop.style.top=y+"px";var u=url(f)+"#toolbar=0&navpanes=0&view=FitH";if(popF.getAttribute("src")!==u)popF.setAttribute("src",u);pop.classList.add("on")},140)}
@@ -352,11 +383,7 @@ function draw(){Array.prototype.forEach.call(tabs.children,function(b,k){b.class
   if(pr){b.setAttribute("aria-disabled","true")}else{b.onmouseenter=function(){showPop(b,c[2])};b.onmouseleave=hidePop;b.onfocus=function(){showPop(b,c[2])};b.onblur=hidePop;b.onclick=function(){openCert(c[0],c[2],b)}}
   grid.appendChild(b)})}
 draw();$("#cmX").onclick=closeCert;
-if(window.fetch&&location.protocol!=="file:"){var all=[].concat.apply([],G.slice(1).map(function(g){return g.i})),seen={};
- Promise.all(all.map(function(c){if(c[3]==="p"||seen[c[2]])return 1;seen[c[2]]=1;return fetch(url(c[2]),{method:"HEAD"}).then(function(r){seen[c[2]]=r.ok?1:2}).catch(function(){})})).then(function(){
-  var miss=Object.keys(seen).filter(function(k){return seen[k]===2});if(!miss.length)return;
-  G=G.slice(1).map(function(g){return {n:g.n,i:g.i.filter(function(c){return miss.indexOf(c[2])<0})}}).filter(function(g){return g.i.length});
-  G.unshift({n:"All",i:[].concat.apply([],G.map(function(g){return g.i}))});gi=0;buildTabs();draw()})}cm.addEventListener("click",function(e){if(e.target===cm)closeCert()});
+cm.addEventListener("click",function(e){if(e.target===cm)closeCert()});
 addEventListener("scroll",hidePop,{passive:true});
 /* ===== AI assistant ===== */
 var CHAT_ENDPOINT=""; /* paste your Cloudflare Worker URL here for full AI answers (see worker.js) */
