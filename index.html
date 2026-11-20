@@ -172,6 +172,15 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .chat form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}.chat form input{flex:1;min-width:0;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:#0b0607;color:var(--cream);font:inherit}
 .chat form button{padding:0 18px;border:0;border-radius:999px;background:var(--gold);color:#1b0c0f;font-weight:500;cursor:pointer}
 .cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.fh{display:flex;align-items:baseline;gap:12px;margin:4px 0 14px}.fh h3{margin:0;font-weight:500;font-size:20px;color:var(--gold);letter-spacing:.04em}.fh span{color:var(--mute);font-size:15px}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:30px}
+.fc{position:relative;display:flex;flex-direction:column;gap:6px;padding:18px 18px 16px;border:1px solid var(--gold);border-radius:14px;background:linear-gradient(160deg,rgba(226,191,122,.14),rgba(122,31,43,.18));box-shadow:0 0 22px rgba(226,191,122,.12);transition:.25s}
+.fc:hover{transform:translateY(-3px);box-shadow:0 0 30px rgba(226,191,122,.25)}
+.fc .fi{color:var(--rose);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.fc h4{margin:0;font-weight:500;font-size:19px;line-height:1.3;color:var(--cream)}
+.fc p{margin:0;color:var(--mute);font-size:15px;line-height:1.4;flex:1}
+.fc .fa{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+@media(max-width:700px){.feat{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-right:-4px}.fc{flex:0 0 78%;scroll-snap-align:start}}
 .cert{display:flex;gap:12px;align-items:flex-start;width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.25);text-align:left;cursor:pointer;transition:.25s}
 .cert:hover,.cert:focus-visible{border-color:var(--gold);transform:translateY(-3px);background:rgba(226,191,122,.08)}
 .cert .ic{flex:none;padding:4px 9px;border:1px solid var(--gold);border-radius:6px;font-size:13px;color:var(--gold);margin-top:3px}
@@ -336,6 +345,7 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 <section class="panel fit" id="certificates" data-sec="Certificates">
  <h2 class="rv">Certificates and training</h2>
  <p class="rv" style="color:var(--mute);margin:-12px 0 22px;max-width:60ch">Hover a certificate for a quick look, or click it to read the full document.</p>
+ <div class="fh"><h3>Featured credentials</h3><span>Swipe or scroll on mobile</span></div><div class="feat" id="feat"></div>
  <div class="tabs" id="ctabs" role="tablist"></div><div class="cg" id="cgrid"></div>
 </section>
 
@@ -526,6 +536,15 @@ function draw(){Array.prototype.forEach.call(tabs.children,function(b,k){b.class
   if(pr){b.setAttribute("aria-disabled","true")}else{b.onclick=function(){openCert(c[0],c[2],b)}}
   grid.appendChild(b)})}
 draw();$("#cmX").onclick=closeCert;
+/* ===== Featured credentials: issuer, title, date, PDF file name, optional verify link ===== */
+var FEAT=[
+["Google · Coursera","Google AI Professional Certificate","8 courses · 16 Nov 2026","google-ai-professional-certificate","https://coursera.org/verify/professional-cert/4GK37EKBWPPD"],
+["Google · Coursera","Google AI Essentials","5 courses · 17 Nov 2026","google-ai-essentials","https://coursera.org/verify/specialization/UB4X7ALQPPXF"],
+["Anthropic","AI Fluency: Framework & Foundations","Certificate of completion","anthropic-ai-fluency",""],
+["DataCamp","Claude 101","2 hrs · 7 Nov 2026","claude-101",""],
+["DataCamp","Introduction to Microsoft Copilot","1 hr · 4 Nov 2026","microsoft-copilot-intro",""]
+];
+(function(){var fe=$("#feat");FEAT.forEach(function(f){var d=document.createElement("article");d.className="fc";d.innerHTML="<small class='fi'></small><h4></h4><p></p><div class='fa'><button type='button' class='btn'>View certificate</button></div>";d.querySelector(".fi").textContent=f[0];d.querySelector("h4").textContent=f[1];d.querySelector("p").textContent=f[2];var vb=d.querySelector("button");vb.onclick=function(){openCert(f[1],f[3],vb)};if(f[4]){var a=document.createElement("a");a.className="btn";a.href=f[4];a.target="_blank";a.rel="noopener noreferrer";a.textContent="Verify \u2197";d.querySelector(".fa").appendChild(a)}fe.appendChild(d)})})();
 cm.addEventListener("click",function(e){if(e.target===cm)closeCert()});
 addEventListener("scroll",hidePop,{passive:true});
 /* ===== AI assistant ===== */
