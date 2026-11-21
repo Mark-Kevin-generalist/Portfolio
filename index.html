@@ -60,6 +60,7 @@ h1 .ln{display:block;overflow:hidden}
 h1 .ln span{display:block;transform:translateY(108%);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
 h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation-delay:.3s}
 @keyframes up{to{transform:none}}
+.roleline{color:var(--gold)!important;font-weight:500}
 .who{margin-top:22px}.who b{font-weight:500;font-size:18px}.who span{display:block;color:var(--mute)}
 .sub{margin-top:10px;color:var(--mute);max-width:44ch}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
@@ -145,11 +146,12 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .chips{display:flex;flex-wrap:wrap;gap:9px}.chips span{padding:7px 15px;border:1px solid var(--line);border-radius:999px;font-size:14.5px}
 .exp h3.s{font-size:32px;margin-bottom:14px}
 .contact{text-align:center;display:grid;place-content:center;justify-items:center}
-.contact p{color:var(--mute);margin-bottom:26px}.contact .cta{justify-content:center}
+.contact p{color:var(--mute);margin-bottom:26px}
+.contact .built{margin:34px 0 0;font-size:14px}.built a{color:var(--gold);text-decoration:underline;text-underline-offset:3px}.contact .cta{justify-content:center}
 .rv{opacity:0;transform:translateX(60px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
 @media(max-width:900px){
  .pill a:not(.on){display:none}.top-r .btn:not(.w){display:none}
- .hero{grid-template-columns:1fr}.portrait-stage{order:-1;width:min(84vw,310px);min-height:285px;margin:0 auto}.photo{width:100%}.hl{grid-template-columns:1fr 1fr}.corner{display:none}
+ .hero{grid-template-columns:minmax(0,1fr)}.portrait-stage{order:-1;width:min(84vw,310px);min-height:285px;margin:0 auto}.photo{width:100%}.hl{grid-template-columns:1fr 1fr}.corner{display:none}
  .work,.exp,.stick,.story-grid{grid-template-columns:1fr}.list{grid-template-columns:1fr 1fr}.chain{display:none}.story-media{width:min(100%,320px);aspect-ratio:9/16}.story-media video{width:100%;height:100%;object-fit:cover}
  .stepper span{font-size:11px}.job{grid-template-columns:1fr;gap:2px}
 }
@@ -192,6 +194,7 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 @media(prefers-reduced-motion:reduce){.cf{transition:none}}
 .cert{display:flex;gap:12px;align-items:flex-start;width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.25);text-align:left;cursor:pointer;transition:.25s}
 .cert:hover,.cert:focus-visible{border-color:var(--gold);transform:translateY(-3px);background:rgba(226,191,122,.08)}
+.cert .tn{flex:none;width:92px;height:auto;border-radius:6px;border:1px solid var(--line);margin-top:2px;background:#fff}
 .cert .ic{flex:none;padding:4px 9px;border:1px solid var(--gold);border-radius:6px;font-size:13px;color:var(--gold);margin-top:3px}
 .cert b{display:block;font-weight:500;font-size:18px;line-height:1.35}.cert small{color:var(--mute);font-size:15.5px;line-height:1.4}
 .pop{position:fixed;z-index:70;width:300px;height:400px;border:1px solid var(--gold);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .2s}
@@ -202,7 +205,69 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .mh{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}.mh b{flex:1;font:500 16px var(--sans)}.mh .btn{padding:6px 14px;font-size:14px}
 .modal iframe{flex:1;width:100%;border:0;background:#fff}
 @media(max-width:900px){.pop{display:none}}
-.panel.fit{min-height:0;padding-bottom:96px}
+
+/* ===== Projects ===== */
+.pjtabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.pj{display:flex;flex-direction:column;gap:5px;text-align:left;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(0,0,0,.25);cursor:pointer;transition:.25s;color:var(--cream)}
+.pj:hover{border-color:var(--gold)}.pj.on{border-color:var(--gold);background:rgba(226,191,122,.1);box-shadow:0 0 24px rgba(226,191,122,.14)}
+.pj b{font:500 26px/1.15 var(--serif)}.pj small{color:var(--mute);font-size:14.5px}
+.badge{display:inline-block;align-self:flex-start;margin-top:4px;padding:3px 11px;border-radius:999px;border:1px solid var(--gold);color:var(--gold);font-size:12.5px;letter-spacing:.05em}
+.badge.prog{border-color:var(--rose);color:var(--rose)}.badge.plan{border-style:dashed;border-color:var(--mute);color:var(--mute)}
+.pjbody{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:34px;align-items:start}
+.pjinfo h3{font-size:36px;margin:0 0 10px}.pjinfo p{color:var(--mute);margin:0 0 12px;max-width:58ch}
+.pjinfo h4{margin:18px 0 8px;font:500 13px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.pjinfo ul{margin:0;padding-left:18px;color:var(--cream);display:grid;gap:6px;font-size:15.5px}
+.pjnote{margin-top:16px;padding:12px 14px;border-left:2px solid var(--gold);background:rgba(226,191,122,.06);border-radius:0 10px 10px 0;color:var(--mute);font-size:14.5px}
+.pvwin{border:1px solid var(--line);border-radius:16px;background:#0c0709;overflow:hidden;box-shadow:0 20px 55px rgba(0,0,0,.35)}
+.pvbar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);background:rgba(226,191,122,.05)}
+.pvbar i{width:10px;height:10px;border-radius:50%;background:rgba(226,191,122,.35)}.pvbar span{margin-left:8px;font-size:13px;color:var(--mute)}
+.pvbody{padding:14px}
+.pvtabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.pvtabs button{padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:none;cursor:pointer;font-size:14px;color:var(--mute)}
+.pvtabs button.on{color:var(--cream);border-color:var(--gold);background:rgba(226,191,122,.12)}
+.pvctl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.pvctl .btn{padding:8px 18px;font-size:14px}.pvctl .btn:disabled{opacity:.4;cursor:default;transform:none}
+.pvnote{margin:12px 0 0;font-size:13px;color:var(--mute)}
+.sgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:12px}
+.sthread{min-height:250px;max-height:290px;overflow-y:auto;display:grid;align-content:start;gap:8px;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.3)}
+.pvhint{color:var(--mute);font-size:14px;margin:0}
+.sm{max-width:86%;padding:8px 12px;border-radius:14px;font-size:14.5px;line-height:1.45}.sm small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+.sm.them{background:rgba(226,191,122,.12);border:1px solid var(--line)}.sm.me{justify-self:end;background:var(--wine)}
+.sside{padding:12px;border:1px solid var(--gold);border-radius:12px;background:rgba(226,191,122,.06);align-self:start}
+.slab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ssug{font-size:15.5px;line-height:1.5;color:var(--cream)}.ssug.mute{color:var(--mute)}
+.stip{margin-top:10px;font-style:italic;color:var(--rose);font-size:14.5px}.ssrc{margin-top:10px;font-size:12.5px;color:var(--gold)}
+.vsteps{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.vsteps button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--mute);cursor:pointer;font-size:14px}
+.vsteps button.on{background:var(--gold);color:#1b0c0f;border-color:var(--gold)}.vsteps button.done{border-color:var(--gold);color:var(--gold)}
+.vtl{display:flex;height:46px;gap:3px;margin:6px 0}
+.vseg{border-radius:6px;transition:flex-grow .6s,opacity .6s,margin .6s;min-width:0}
+.vseg.speech{background:rgba(226,191,122,.78)}.vseg.silence{background:repeating-linear-gradient(45deg,rgba(229,139,151,.55) 0 6px,rgba(229,139,151,.2) 6px 12px)}
+.vseg.off{background:rgba(182,165,151,.38)}.vseg.clip{background:rgba(242,235,224,.35)}
+.vseg.gone{flex-grow:0!important;opacity:0;margin-left:-3px}.vseg.fl{box-shadow:inset 3px 0 0 #fff}
+.vleg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--mute);margin-bottom:8px;min-height:18px}
+.vleg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.vrow{display:flex;gap:3px;height:22px;margin-bottom:4px}.vrow>div{min-width:0}
+.vc{border-radius:4px;background:#000;color:#ffd84a;font:700 11px/22px var(--sans);text-align:center;letter-spacing:.06em;text-shadow:0 0 2px #000}
+.vmusic{height:14px;border-radius:7px;background:linear-gradient(90deg,rgba(229,139,151,.75),rgba(229,139,151,.08));margin-bottom:4px}
+.vdesc{margin-top:10px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.3)}.vdesc b{display:block;font-weight:500;margin-bottom:4px}.vdesc p{margin:0;color:var(--mute);font-size:14.5px}
+.vdesc ul{margin:8px 0 0;padding-left:18px;color:var(--cream);font-size:14.5px;display:grid;gap:3px}
+.wcl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.wcl button{padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:none;cursor:pointer;font-size:14px;color:var(--mute);text-align:left}
+.wcl button.on{color:var(--cream);border-color:var(--gold);background:rgba(226,191,122,.12)}
+.wgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:12px}
+.wbox{padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.3)}
+.wbox h5{margin:0 0 8px;font:500 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.wmail{padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin-bottom:6px;font-size:13.5px;line-height:1.35}.wmail small{display:block;color:var(--mute);font-size:12px}.wmail em{color:var(--gold);font-style:normal;font-size:12px}
+.wq{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.wcell{min-height:84px;padding:8px;border:1px dashed var(--line);border-radius:10px;font-size:13px}.wcell h6{margin:0 0 5px;font:500 11.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.wcell.hot{border-color:var(--rose)}.wcell.hot h6{color:var(--rose)}
+.wtask{padding:5px 8px;margin-bottom:4px;border-radius:8px;background:rgba(226,191,122,.12);line-height:1.3}.wtask small{display:block;color:var(--mute);font-size:11.5px}
+.wkpi{margin-top:10px}.wkr{margin-bottom:8px;font-size:13px}.wkr div{position:relative;height:8px;border-radius:4px;background:rgba(226,191,122,.15);margin-top:4px}.wkr i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--gold)}.wkr u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--rose)}
+.wnext{margin-top:10px;padding:9px 11px;border:1px solid var(--gold);border-radius:10px;font-size:13.5px;background:rgba(226,191,122,.07)}
+@media(max-width:900px){.pjtabs{grid-template-columns:1fr}.pjbody{grid-template-columns:1fr}.sgrid,.wgrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.vseg{transition:none}}
+.pill a{white-space:nowrap;padding:7px 14px}
+.panel.fit{min-height:0;padding-bottom:70px}
 .lead{color:var(--mute);max-width:66ch;margin:-12px 0 24px}
 .detail .biz{color:var(--cream);border-left:2px solid var(--gold);padding-left:14px;margin-top:16px}
 .detail .biz b{color:var(--gold);font-weight:500}
@@ -244,9 +309,8 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
  </div>
 </div>
 
-<nav class="pill" aria-label="Sections"><a href="#top" data-nav="Home">Home</a><a href="#work" data-nav="Why me">Why me</a><a href="#process" data-nav="How I work">How I work</a><a href="#experience" data-nav="Experience">Experience</a><a href="#story" data-nav="My story">My story</a><a href="#certificates" data-nav="Certificates">Certificates</a><a href="#contact" data-nav="Contact">Contact</a></nav>
+<nav class="pill" aria-label="Sections"><a href="#top" data-nav="Home">Home</a><a href="#work" data-nav="Why me">Why me</a><a href="#experience" data-nav="Experience">Experience</a><a href="#projects" data-nav="Projects">Projects</a><a href="#story" data-nav="My story">My story</a><a href="#certificates" data-nav="Certificates">Certificates</a><a href="#contact" data-nav="Contact">Contact</a></nav>
 <div class="top-r"><a class="btn w" href="#" data-email-chooser>Email me <i>&rarr;</i></a><button class="btn" id="askTop" type="button">Ask AI</button><a class="btn" href="tel:+639664125330">Call</a></div>
-<div class="dock" role="progressbar" aria-label="Overall website reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="site-progress"><span id="siteProgressFill"></span></div><b id="siteProgressLabel">0%</b><a class="btn w" href="#" data-email-chooser>Email me <i>&rarr;</i></a></div>
 
 <header class="panel" id="top" data-sec="Home">
  
@@ -255,8 +319,8 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
   <div class="hero-embers" aria-hidden="true"><span class="orbit-particle p13"></span><span class="orbit-particle p14"></span><span class="orbit-particle p15"></span><span class="orbit-particle p16"></span><span class="orbit-particle p17"></span><span class="orbit-particle p18"></span><span class="orbit-particle p19"></span><span class="orbit-particle p20"></span><span class="orbit-particle p21"></span><span class="orbit-particle p22"></span><span class="orbit-particle p23"></span><span class="orbit-particle p24"></span><span class="orbit-particle p25"></span><span class="orbit-particle p26"></span><span class="orbit-particle p27"></span><span class="orbit-particle p28"></span><span class="orbit-particle p29"></span><span class="orbit-particle p30"></span><span class="orbit-particle p31"></span><span class="orbit-particle p32"></span><span class="orbit-particle p33"></span><span class="orbit-particle p34"></span><span class="orbit-particle p35"></span><span class="orbit-particle p36"></span><span class="orbit-particle p37"></span><span class="orbit-particle p38"></span><span class="orbit-particle p39"></span><span class="orbit-particle p40"></span><span class="orbit-particle p41"></span><span class="orbit-particle p42"></span><span class="orbit-particle p43"></span><span class="orbit-particle p44"></span><span class="orbit-particle p45"></span><span class="orbit-particle p46"></span><span class="orbit-particle p47"></span><span class="orbit-particle p48"></span><span class="orbit-particle p49"></span><span class="orbit-particle p50"></span><span class="orbit-particle p51"></span><span class="orbit-particle p52"></span><span class="orbit-particle p53"></span><span class="orbit-particle p54"></span><span class="orbit-particle p55"></span><span class="orbit-particle p56"></span><span class="orbit-particle p57"></span><span class="orbit-particle p58"></span><span class="orbit-particle p59"></span><span class="orbit-particle p60"></span><span class="orbit-particle p61"></span><span class="orbit-particle p62"></span><span class="orbit-particle p63"></span><span class="orbit-particle p64"></span><span class="orbit-particle p65"></span><span class="orbit-particle p66"></span><span class="orbit-particle p67"></span><span class="orbit-particle p68"></span><span class="orbit-particle p69"></span><span class="orbit-particle p70"></span><span class="orbit-particle p71"></span><span class="orbit-particle p72"></span><span class="orbit-particle p73"></span><span class="orbit-particle p74"></span><span class="orbit-particle p75"></span><span class="orbit-particle p76"></span><span class="orbit-particle p77"></span><span class="orbit-particle p78"></span><span class="orbit-particle p79"></span><span class="orbit-particle p80"></span><span class="orbit-particle p81"></span><span class="orbit-particle p82"></span><span class="orbit-particle p83"></span><span class="orbit-particle p84"></span><span class="orbit-particle p85"></span><span class="orbit-particle p86"></span><span class="orbit-particle p87"></span><span class="orbit-particle p88"></span><span class="orbit-particle p89"></span><span class="orbit-particle p90"></span><span class="orbit-particle p91"></span><span class="orbit-particle p92"></span></div>
   <div>
    <h1><span class="ln"><span>Not just an assistant.</span></span><span class="ln"><span class="hi">The one responsible</span></span><span class="ln"><span>when deadlines can&rsquo;t slip.</span></span></h1>
-   <p class="who"><b>Mark Kevin Inumerables</b><span>Administration · Customer Support · Procurement · AI Workflows</span><span>Available for remote work, UTC+8</span></p>
-   <p class="sub">Ten years in ship administration, backed by customer service and collections experience. I support remote teams with dependable administration, procurement coordination, accurate records and practical AI-powered workflows.</p>
+   <p class="who"><b>Mark Kevin Inumerables</b><span id="roleLine" class="roleline">Remote Administrative &amp; Operations Assistant · AI workflow support</span><span>Available for remote work, UTC+8</span></p>
+   <p class="sub" id="heroSub">Ten years in ship administration, backed by customer service and collections experience. I support remote teams with dependable administration, procurement coordination, accurate records and practical AI-powered workflows.</p>
    <div class="cta"><a class="btn w" href="#work">Why hire me <i>&rarr;</i></a><a class="btn" href="assets/Mark-Kevin-Resume.pdf">Download resume</a></div>
    <form class="ask" id="askF"><input id="askIn" placeholder="Ask my AI assistant about my experience" aria-label="Ask my AI assistant"><button type="submit">Ask</button></form>
    <div class="socials" aria-label="Social profiles">
@@ -316,6 +380,13 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
  </div>
 </section>
 
+<section class="panel fit" id="projects" data-sec="Projects">
+ <h2 class="rv">Projects I&rsquo;m building</h2>
+ <p class="rv lead">Tools I&rsquo;m designing and building. Each one states its real status, and the interactive previews use sample data.</p>
+ <div class="pjtabs" id="pjtabs" role="tablist"></div>
+ <div class="pjbody" id="pjbody"></div>
+</section>
+
 <section class="panel fit" id="story" data-sec="My story">
  <div class="story-grid">
   <div class="story-copy">
@@ -366,7 +437,7 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 </div>
 
 <aside class="chat" id="chat" aria-label="AI assistant" hidden>
- <header><b>Ask Mark&rsquo;s AI</b><button id="vc" type="button" aria-pressed="true">Voice on</button><button id="cx" type="button" aria-label="Close chat">Close</button></header>
+ <header><b>Ask Mark&rsquo;s AI</b><button id="vc" type="button" aria-pressed="false">Voice off</button><button id="cx" type="button" aria-label="Close chat">Close</button></header>
  <div class="msgs" id="msgs" aria-live="polite"></div>
  <div class="cch" id="cch"></div>
  <form id="cf"><input id="ci" placeholder="Type your question" aria-label="Your question" autocomplete="off"><button type="submit">Send</button></form>
@@ -381,6 +452,7 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
   <a class="btn" href="https://linkedin.com/in/mark-kevin-inumerables-696220173">LinkedIn</a>
   <a class="btn" href="assets/Mark-Kevin-Resume.pdf">Download resume</a>
  </div>
+ <p class="rv built">Designed and built by me with AI-assisted development, and hosted on GitHub Pages. <a href="https://github.com/Mark-Kevin-generalist/Portfolio" target="_blank" rel="noopener">View the source &#8599;</a></p>
 </section>
 
 <script>
@@ -421,6 +493,16 @@ var cats=[
 {t:"AI response evaluation",s:"cream",d:"Compare AI-generated responses against rubrics for relevance, accuracy, completeness, instruction following and clarity.",b:"Structured quality assessments with concise evidence-based rationales.",tools:"Evaluation rubrics, QA workflows",f:["Read prompt and rubric","Assess responses","Compare strengths","Record rationale"]}
 ]}];
 var ci=0,ii=0,tabs=$("#tabs"),list=$("#list"),det=$("#detail");
+/* ===== Role switch: add ?role=ai, admin, support, procurement or payroll to the page link ===== */
+var ROLES={
+ admin:{line:"Remote Administrative & Virtual Assistant · Operations support",sub:"Ten years running a vessel\u2019s administration, where records, deadlines and follow-through can\u2019t slip. I bring that discipline to remote teams: inbox and calendar support, accurate documents and reporting, and dependable day-to-day coordination.",tab:0},
+ ai:{line:"AI workflow & automation support · Administrative operations",sub:"Ten years of administration taught me which tasks repeat and where they go wrong. I now map and build practical AI-assisted workflows, such as email triage, drafted replies for approval, support routing and reminders, with a human always in control.",tab:1},
+ support:{line:"Remote Customer Support & Collections Specialist",sub:"Phone, email and chat support and collections for North American clients, followed by ten years of vendor, agent and crew coordination. Calm with customers, consistent with records, and careful about follow-up.",tab:2},
+ procurement:{line:"Remote Procurement & Logistics Assistant",sub:"Requisitions, supplier quotations, comparisons against specification and delivery tracking, backed by ten years of port, vendor and provisions coordination for a vessel.",tab:3},
+ payroll:{line:"Remote Payroll & Finance Administration Assistant",sub:"Careful with figures and records: timesheets, allowances, deductions, expense logs and reconciled administrative records prepared for review.",tab:4}
+};
+ROLES.va=ROLES.admin;ROLES.automation=ROLES.ai;ROLES.cs=ROLES.support;ROLES.sales=ROLES.support;ROLES.logistics=ROLES.procurement;
+(function(){try{var r=(new URLSearchParams(location.search).get("role")||"").toLowerCase().replace(/[^a-z]/g,""),R=ROLES[r];if(!R)return;$("#roleLine").textContent=R.line;$("#heroSub").textContent=R.sub;ci=R.tab}catch(e){}})();
 cats.forEach(function(c,k){var b=document.createElement("button");b.className="tab";b.setAttribute("role","tab");b.innerHTML=c.n+"<sup>"+c.i.length+"</sup>";b.onclick=function(){ci=k;ii=0;draw(true)};tabs.appendChild(b)});
 function draw(tabChange){
  Array.prototype.forEach.call(tabs.children,function(b,k){b.classList.toggle("on",k===ci)});
@@ -433,14 +515,8 @@ draw();
 /* process */
 
 /* overall site progress + active section navigation */
-var progressDock=$(".dock"),progressFill=$("#siteProgressFill"),progressLabel=$("#siteProgressLabel");
 var secs=document.querySelectorAll("[data-sec]"),links=document.querySelectorAll("[data-nav]");
 function upd(){
- var max=document.documentElement.scrollHeight-innerHeight;
- var progress=max>0?Math.min(100,Math.max(0,(scrollY/max)*100)):100;
- progressFill.style.width=progress+"%";
- progressDock.setAttribute("aria-valuenow",String(Math.round(progress)));
- progressLabel.textContent=Math.round(progress)+"%";
  var mid=innerHeight/2,cur=secs[0];
  secs.forEach(function(section){var r=section.getBoundingClientRect();if(r.top<=mid&&r.bottom>mid)cur=section});
  links.forEach(function(a){a.classList.toggle("on",a.dataset.nav===cur.dataset.sec||(cur.id==="gallery"&&a.dataset.nav==="Experience"))});
@@ -464,22 +540,9 @@ if(storyVideo){storyVideo.muted=true;var videoObserver=new IntersectionObserver(
 /* ===== Certificates: edit names, details and file names here. PDFs go in assets/certs/ ===== */
 var G=[
 {n:"All",i:[
-["Google AI Essentials (Specialization)","Google via Coursera · Completed 17 Nov 2026 · 5 courses","google-ai-essentials"],
-["Google AI Professional Certificate","Google via Coursera · Completed 16 Nov 2026 · 8 courses","google-ai-professional-certificate"],
+["Google AI Essentials (Specialization)","Google via Coursera · Completed 17 Nov 2026 · 5 courses (listed under Google AI courses)","google-ai-essentials"],
+["Google AI Professional Certificate","Google via Coursera · Completed 16 Nov 2026 · 8 courses (listed under Google AI courses)","google-ai-professional-certificate"],
 ["AI Fluency: Framework & Foundations (Anthropic)","Certificate of completion","anthropic-ai-fluency"],
-["Stay Ahead of the AI Curve","Google via Coursera · Completed 17 Nov 2026","google-stay-ahead-ai-curve"],
-["Use AI Responsibly","Google via Coursera · Completed 17 Nov 2026","google-use-ai-responsibly"],
-["Discover the Art of Prompting","Google via Coursera · Completed 17 Nov 2026","google-art-of-prompting"],
-["Maximize Productivity With AI Tools","Google via Coursera · Completed 17 Nov 2026","google-ai-productivity-tools"],
-["Introduction to AI","Google via Coursera · Completed 16 Nov 2026","google-introduction-to-ai"],
-["AI for App Deployment","Google via Coursera · Completed 16 Nov 2026","google-ai-app-deployment"],
-["AI for App Building","Google via Coursera · Completed 14 Nov 2026","google-ai-app-building"],
-["AI for Data Analysis","Google via Coursera · Completed 14 Nov 2026","google-ai-data-analysis"],
-["AI for Content Creation","Google via Coursera · Completed 14 Nov 2026","google-ai-content-creation"],
-["AI for Writing and Communicating","Google via Coursera · Completed 14 Nov 2026","google-ai-writing-communicating"],
-["AI for Research and Insights","Google via Coursera · Completed 14 Nov 2026","google-ai-research-insights"],
-["AI for Brainstorming and Planning","Google via Coursera · Completed 13 Nov 2026","google-ai-brainstorming-planning"],
-["AI Fundamentals","Google via Coursera · Completed 12 Nov 2026","google-ai-fundamentals"],
 ["Claude 101 (DataCamp)","Completed 7 Nov 2026 · 2 hrs","claude-101"],
 ["Introduction to Microsoft Copilot (DataCamp)","Completed 4 Nov 2026 · 1 hr","microsoft-copilot-intro"],
 ["Conflict Management","Completed 13 Oct 2026 · Score 85%","conflict-management"],
@@ -513,9 +576,14 @@ var G=[
 ["Fatigue Management","Completed 3 May 2018 · Score 90%","fatigue-management"]
 ]},
 {n:"AI and tools",i:[
-["Google AI Essentials (Specialization)","Google via Coursera · Completed 17 Nov 2026 · 5 courses","google-ai-essentials"],
-["Google AI Professional Certificate","Google via Coursera · Completed 16 Nov 2026 · 8 courses","google-ai-professional-certificate"],
+["Google AI Essentials (Specialization)","Google via Coursera · Completed 17 Nov 2026 · 5 courses (listed under Google AI courses)","google-ai-essentials"],
+["Google AI Professional Certificate","Google via Coursera · Completed 16 Nov 2026 · 8 courses (listed under Google AI courses)","google-ai-professional-certificate"],
 ["AI Fluency: Framework & Foundations (Anthropic)","Certificate of completion","anthropic-ai-fluency"],
+["Claude 101 (DataCamp)","Completed 7 Nov 2026 · 2 hrs","claude-101"],
+["Introduction to Microsoft Copilot (DataCamp)","Completed 4 Nov 2026 · 1 hr","microsoft-copilot-intro"],
+["GoHighLevel training","In training now","","p"]
+]},
+{n:"Google AI courses",i:[
 ["Stay Ahead of the AI Curve","Google via Coursera · Completed 17 Nov 2026","google-stay-ahead-ai-curve"],
 ["Use AI Responsibly","Google via Coursera · Completed 17 Nov 2026","google-use-ai-responsibly"],
 ["Discover the Art of Prompting","Google via Coursera · Completed 17 Nov 2026","google-art-of-prompting"],
@@ -528,10 +596,7 @@ var G=[
 ["AI for Writing and Communicating","Google via Coursera · Completed 14 Nov 2026","google-ai-writing-communicating"],
 ["AI for Research and Insights","Google via Coursera · Completed 14 Nov 2026","google-ai-research-insights"],
 ["AI for Brainstorming and Planning","Google via Coursera · Completed 13 Nov 2026","google-ai-brainstorming-planning"],
-["AI Fundamentals","Google via Coursera · Completed 12 Nov 2026","google-ai-fundamentals"],
-["Claude 101 (DataCamp)","Completed 7 Nov 2026 · 2 hrs","claude-101"],
-["Introduction to Microsoft Copilot (DataCamp)","Completed 4 Nov 2026 · 1 hr","microsoft-copilot-intro"],
-["GoHighLevel training","In training now","","p"]
+["AI Fundamentals","Google via Coursera · Completed 12 Nov 2026","google-ai-fundamentals"]
 ]}
 ];
 var gi=0,tabs=$("#ctabs"),grid=$("#cgrid"),pop=$("#pop"),popF=$("#popF"),cm=$("#cm"),cmF=$("#cmF"),last=null,tm=null,hov=matchMedia("(hover:hover)").matches;
@@ -544,7 +609,7 @@ function openCert(t,f,btn){hidePop();last=btn;$("#cmT").textContent=t;var pdf=ur
 function closeCert(){cm.hidden=true;cmF.removeAttribute("src");document.body.style.overflow="";if(last)last.focus()}
 function draw(){Array.prototype.forEach.call(tabs.children,function(b,k){b.classList.toggle("on",k===gi)});grid.innerHTML="";
  G[gi].i.forEach(function(c){var b=document.createElement("button"),pr=c[3]==="p";b.type="button";b.className="cert"+(pr?" p":"");b.innerHTML="<span class='ic"+(pr?" p":"")+"'>"+(pr?"SOON":"PDF")+"</span><span><b></b><small></small></span>";b.querySelector("b").textContent=c[0];b.querySelector("small").textContent=c[1];
-  if(pr){b.setAttribute("aria-disabled","true")}else{b.onclick=function(){openCert(c[0],c[2],b)}}
+  if(pr){b.setAttribute("aria-disabled","true")}else{b.onclick=function(){openCert(c[0],c[2],b)};(function(c,b){var t=new Image();t.className="tn";t.alt="";t.onload=function(){var ic=b.querySelector(".ic");if(ic)b.replaceChild(t,ic)};t.src="assets/certs/thumbs/"+c[2]+".jpg"})(c,b)}
   grid.appendChild(b)})}
 draw();$("#cmX").onclick=closeCert;
 /* ===== Featured credentials carousel: issuer, title, date, PDF file name, verify link, image ratio ===== */
@@ -586,7 +651,7 @@ cm.addEventListener("click",function(e){if(e.target===cm)closeCert()});
 addEventListener("scroll",hidePop,{passive:true});
 /* ===== AI assistant ===== */
 var CHAT_ENDPOINT="https://personal-assistant.sacredmaui66.workers.dev"; /* paste your Cloudflare Worker URL here for full AI answers (see worker.js) */
-var chat=$("#chat"),msgs=$("#msgs"),ci=$("#ci"),hist=[],voiceOn=true,greeted=false,voice=null;
+var chat=$("#chat"),msgs=$("#msgs"),ci=$("#ci"),hist=[],voiceOn=false,greeted=false,voice=null;
 var KB=[
 [["responsib","accountab","critical","deadline","pressure","reliable","ownership"],"Mark sees himself as the person responsible, not just an assistant. After ten years of critical operations and deadlines that cannot move, he treats anything missed as his to fix, and he brings that ownership to remote teams."],
 [["rate","salary","pay ","hourly","charge","cost","price"],"Mark's rates start at $6 per hour for permanent positions and $7.50 per hour for freelance tasks. Email him for a quote on a specific scope."],
@@ -599,6 +664,7 @@ var KB=[
 [["procurement","purchasing","supplier","quotation","purchase order"],"Mark supports procurement by reviewing requisitions, sourcing suppliers, requesting and comparing quotations against specifications, quality, price and delivery schedules, then coordinating order and delivery follow-up."],
 [["payroll","timesheet","salary administration"],"Mark has payroll administration experience supporting payroll entries, summaries and records, including organising source information for review. He does not claim independent end-to-end payroll processing."],
 [["automation","workflow","claude","gohighlevel","n8n","email ai"],"Mark is developing practical AI-assisted workflows, including email classification and summaries, extracting key details, drafting replies for human approval, routing customer support requests, CRM updates and collections reminders. He recently completed DataCamp's Claude 101 and Introduction to Microsoft Copilot courses and is now learning GoHighLevel; platform experience is presented honestly."],
+[["project","scripto","video studio","work buddy","portfolio project","built an app","building"],"Mark is building three projects, and each one is shown honestly with its status. Scripto AI is a Windows call-assistance desktop app with company knowledge, live suggested answers and a mock-interview mode (in active development). Video Studio is a Python, Flask and FFmpeg short-form video editor (core editor working, studio in testing). My Work Buddy is a planned workspace for virtual assistants with several clients, with a filtered inbox, to-do extraction, calendar, KPIs and priorities (concept stage). See the Projects section."],
 [["ai ","annotation","outlier","training data"],"Since October 2026 Mark has also worked as a freelance AI data annotator across several platforms."],
 [["role","position","looking for","open to","jobs"],"Mark is open to virtual assistant, administrative assistant, customer service and support, procurement assistant, logistics coordinator, sales admin, real estate admin, secretary, personal assistant, crewing officer and marine coordinator roles."],
 [["skill","tool","software","excel","google","slack","hubstaff"],"Mark works with Google Workspace, Excel, Slack, Hubstaff, Flux, Okta, GitHub and Microsoft Copilot, and handles document control, reporting and first-line IT support."],
@@ -622,6 +688,135 @@ $("#askF").onsubmit=function(e){e.preventDefault();var i=$("#askIn"),v=i.value;i
 $("#askTop").onclick=openChat;$("#cx").onclick=closeChat;
 $("#vc").onclick=function(){voiceOn=!voiceOn;this.textContent=voiceOn?"Voice on":"Voice off";this.setAttribute("aria-pressed",voiceOn);if(!voiceOn&&window.speechSynthesis)speechSynthesis.cancel()};
 addEventListener("keydown",function(e){if(e.key==="Escape"){if(!cm.hidden)closeCert();else if(!chat.hidden)closeChat()}});
+})();
+</script>
+
+<script>
+(function(){
+var $=function(q,r){return (r||document).querySelector(q)};
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function pills(a){var w=el("div","chips");a.forEach(function(x){w.appendChild(el("span","",x))});return w}
+
+/* ---------- Scripto AI ---------- */
+var CALL=[
+{who:"Customer",text:"My internet keeps dropping every evening. Can you help?",sug:"I'm sorry about that, and I can help. Let me confirm your account name first, then we'll check what the lights on the router show.",tip:"Acknowledge first, then confirm identity before troubleshooting.",src:"Troubleshooting guide (sample)"},
+{who:"Agent",text:"Of course. May I have the account name, and what colour is the light on the router?"},
+{who:"Customer",text:"It's under the Reyes household. The light is blinking orange.",sug:"Thank you. A blinking orange light usually points to a line issue. Please restart the router, and I'll check the line from my side.",tip:"Say what you will do next, and how long it takes.",src:"Router lights reference (sample)"},
+{who:"Customer",text:"How much is the faster plan?",sug:"I can confirm the exact monthly price from the plan sheet. May I check which plans are available at your address?",tip:"Use approved pricing only. Never guess.",src:"Plan sheet (sample)"}];
+var INT=[
+{who:"Interviewer",text:"Tell me about a time you handled a tight deadline.",sug:"Use your own real example. Start with the situation and the deadline, then what you did, then the result.",tip:"Keep it under two minutes and end on the outcome.",src:"Your resume and the job description (sample)"},
+{who:"You",text:"(You answer with your own example.)"},
+{who:"Interviewer",text:"Which tools do you use to stay organised?",sug:"Name the tools you have actually used, and one habit that shows how you use them.",tip:"Be specific. Don't list tools you haven't used.",src:"Candidate profile (sample)"}];
+function pvScripto(box){
+ var mode="Call Center",step=-1;
+ box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>Scripto AI &middot; interface preview with sample dialogue</span></div><div class="pvbody"><div class="pvtabs"></div><div class="sgrid"><div class="sthread"></div><div class="sside"><div class="slab">Suggested answer</div><div class="ssug"></div><div class="stip"></div><div class="ssrc"></div></div></div><div class="pvctl"><button class="btn" type="button" data-a="next">Next line &#9656;</button><button class="btn" type="button" data-a="reset">Reset</button></div><p class="pvnote"></p></div></div>';
+ var tabs=$(".pvtabs",box),th=$(".sthread",box),sug=$(".ssug",box),tip=$(".stip",box),src=$(".ssrc",box),note=$(".pvnote",box),nx=$("[data-a=next]",box);
+ function data(){return mode==="Call Center"?CALL:INT}
+ function draw(){
+  tabs.innerHTML="";["Call Center","Interview Assistant"].forEach(function(m){var b=el("button",m===mode?"on":"",m);b.type="button";b.onclick=function(){mode=m;step=-1;draw()};tabs.appendChild(b)});
+  th.innerHTML="";var d=data();
+  if(step<0)th.appendChild(el("p","pvhint","Press Next line to play the sample conversation."));
+  for(var i=0;i<=step;i++){var l=d[i],mine=(l.who==="Agent"||l.who==="You"),m=el("div","sm "+(mine?"me":"them"));m.appendChild(el("small","",l.who));m.appendChild(el("span","",l.text));th.appendChild(m)}
+  th.scrollTop=th.scrollHeight;
+  var cur=step>=0?d[step]:null;
+  if(cur&&cur.sug){sug.textContent=cur.sug;sug.classList.remove("mute");tip.textContent=cur.tip;src.textContent="Source: "+cur.src}
+  else{sug.textContent=cur?"This is your own line, so no suggestion is needed.":"Waiting for the first line...";sug.classList.add("mute");tip.textContent="";src.textContent=""}
+  nx.disabled=step>=d.length-1;
+  note.textContent=mode==="Call Center"?"Sample dialogue with a fictional company. In the real app the microphone and the call audio are transcribed as two separate streams, and only transcript text is stored, not audio.":"Interview Assistant is for ethical mock-interview practice, using your own profile, job description and resume."}
+ box.addEventListener("click",function(e){var a=e.target.getAttribute&&e.target.getAttribute("data-a");if(a==="next"&&step<data().length-1){step++;draw()}if(a==="reset"){step=-1;draw()}});
+ draw()}
+
+/* ---------- Video Studio ---------- */
+var VSEG=[["speech",16],["silence",7],["speech",20],["off",9],["speech",18],["silence",6],["speech",14]];
+var VST=[
+{n:"Upload clips or write a story idea",d:"Several clips are joined in file-name order and scaled to vertical 9:16. In story mode, a language model plans 3 to 6 scenes instead."},
+{n:"Face and silence check",d:"Frames are sampled for a face and silent gaps are found. Sections with no face for 2 seconds or more, and long silences, are marked for removal."},
+{n:"Transcribe with word timestamps",d:"Speech is transcribed with Whisper. Words that fall inside removed sections are dropped."},
+{n:"Cut and join",d:"Marked sections are removed and the rest is joined. Every timestamp is remapped to the new timeline."},
+{n:"Captions and hook",d:"Typed or transcript captions with word highlighting, plus a hook in the first seconds, placed clear of the face."},
+{n:"Grade, finish and flashes",d:"A colour grade and optional cinematic finish are applied, and a quick flash marks each cut."},
+{n:"Sound effects and music",d:"Effects are matched to the cuts, and low-volume music fades out at the end."},
+{n:"Decision report",d:"Every decision is written to a report, so the edit can be checked and improved.",rep:["Face check result and how reliable it was","Sections removed, and why","Words dropped from the transcript","Style and grade chosen","Cuts, effects and music used"]}];
+function pvVideo(box){
+ var step=0;
+ box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>Video Studio &middot; how one reel is made (illustrative timeline)</span></div><div class="pvbody"><div class="vsteps"></div><div class="vleg"></div><div class="vtl"></div><div class="vrow vcaps"></div><div class="vmusic"></div><div class="vdesc"></div><p class="pvnote">Illustrative timeline, not real footage. Click the numbers to move through the steps.</p></div></div>';
+ var st=$(".vsteps",box),leg=$(".vleg",box),tl=$(".vtl",box),caps=$(".vcaps",box),mus=$(".vmusic",box),desc=$(".vdesc",box);
+ function draw(){
+  st.innerHTML="";VST.forEach(function(v,i){var b=el("button",i===step?"on":(i<step?"done":""),String(i+1));b.type="button";b.setAttribute("aria-label","Step "+(i+1)+": "+v.n);b.onclick=function(){step=i;draw()};st.appendChild(b)});
+  leg.innerHTML=step>=1&&step<3?'<span><i style="background:rgba(226,191,122,.78)"></i>Speech to keep</span><span><i style="background:rgba(229,139,151,.5)"></i>Silence to remove</span><span><i style="background:rgba(182,165,151,.5)"></i>No face to remove</span>':(step===0?'<span><i style="background:rgba(242,235,224,.35)"></i>Raw clips</span>':"");
+  tl.innerHTML="";var first=true;
+  VSEG.forEach(function(g){var gone=step>=3&&g[0]!=="speech",d=el("div","vseg "+(step===0?"clip":g[0])+(gone?" gone":""));d.style.flexGrow=gone?0:g[1];if(step>=5&&g[0]==="speech"&&!first)d.classList.add("fl");if(g[0]==="speech")first=false;tl.appendChild(d)});
+  caps.innerHTML="";caps.style.display=step>=4?"flex":"none";var k=0;
+  if(step>=4)VSEG.forEach(function(g){if(g[0]!=="speech")return;var c=el("div","vc",k===0?"HOOK":"CAPTION");c.style.flexGrow=g[1];caps.appendChild(c);k++});
+  mus.style.display=step>=6?"block":"none";
+  desc.innerHTML="";var v=VST[step];desc.appendChild(el("b","","Step "+(step+1)+" of "+VST.length+": "+v.n));desc.appendChild(el("p","",v.d));
+  if(v.rep){var u=el("ul");v.rep.forEach(function(x){u.appendChild(el("li","",x))});desc.appendChild(u)}}
+ draw()}
+
+/* ---------- My Work Buddy (concept) ---------- */
+var CL=[
+{n:"Harbor Realty",mail:[
+ {f:"Maintenance team",s:"Tenant AC repair request, Unit 4B",t:"Get a repair quote from the HVAC vendor",u:1,i:1,d:"Today, 3:00 pm"},
+ {f:"Property owner",s:"Lease renewal documents for review",t:"Prepare the lease renewal letters",u:0,i:1,d:"Friday"},
+ {f:"Marketing",s:"Newsletter idea: spring listings",t:"Draft the newsletter outline",u:0,i:0,d:"Next week"}],
+ k:[["Requests answered within 24 hours",82,90],["Documents sent on time",95,100]]},
+{n:"Bright Smile Dental",mail:[
+ {f:"Front desk",s:"Insurance verification needed for tomorrow",t:"Verify insurance for tomorrow's patients",u:1,i:1,d:"Today, 5:00 pm"},
+ {f:"Patient",s:"Request to reschedule my appointment",t:"Reschedule and confirm by email",u:1,i:0,d:"Today"},
+ {f:"Office manager",s:"Monthly recall list",t:"Prepare next month's recall list",u:0,i:1,d:"Thursday"}],
+ k:[["Appointments confirmed 48h ahead",74,90],["Insurance checked before visit",88,100]]},
+{n:"Nova Home Goods",mail:[
+ {f:"Customer",s:"Complaint: my order arrived late",t:"Reply to the customer and check courier status",u:1,i:1,d:"Today, 2:00 pm"},
+ {f:"Supplier",s:"Updated price list attached",t:"Update the product cost sheet",u:0,i:1,d:"Wednesday"},
+ {f:"Brand manager",s:"Social posts approved",t:"Schedule the approved posts",u:1,i:0,d:"Tomorrow"}],
+ k:[["First reply within 4 hours",69,85],["Orders tracked to delivery",91,100]]}];
+var QD=[["Do now",1,1,"hot"],["Schedule",0,1,""],["Quick or delegate",1,0,""],["Later",0,0,""]];
+function pvBuddy(box){
+ var ci=0,cnt=[0,0,0],timer=null;
+ box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>My Work Buddy &middot; concept preview with sample clients</span></div><div class="pvbody"><div class="wcl"></div><div class="wgrid"><div class="wbox"><h5>Inbox &middot; job-related emails only</h5><div class="wml"></div><div class="pvctl"><button class="btn" type="button" data-a="scan">Scan for action items</button><button class="btn" type="button" data-a="reset">Reset</button></div></div><div class="wbox"><h5>Urgent vs important</h5><div class="wq"></div><div class="wnext"></div></div></div><div class="wbox wkpi"><h5>Goals and KPIs (sample values)</h5><div class="wkb"></div></div><p class="pvnote">Concept preview with made-up clients, emails and numbers. The app itself is not built yet.</p></div></div>';
+ var cl=$(".wcl",box),ml=$(".wml",box),q=$(".wq",box),nx=$(".wnext",box),kb=$(".wkb",box);
+ function found(){var c=CL[ci];return c.mail.slice(0,cnt[ci])}
+ function draw(){
+  cl.innerHTML="";CL.forEach(function(c,i){var b=el("button",i===ci?"on":"",c.n);b.type="button";b.onclick=function(){ci=i;draw()};cl.appendChild(b)});
+  ml.innerHTML="";CL[ci].mail.forEach(function(m,i){var d=el("div","wmail");d.appendChild(el("small","","From: "+m.f));d.appendChild(el("span","",m.s));if(i<cnt[ci])d.appendChild(el("em","","  ✓ action item found"));ml.appendChild(d)});
+  var fs=found();q.innerHTML="";
+  QD.forEach(function(z){var cell=el("div","wcell "+z[3]);cell.appendChild(el("h6","",z[0]));fs.forEach(function(m){if(!!m.u===!!z[1]&&!!m.i===!!z[2]){var t=el("div","wtask",m.t);t.appendChild(el("small","","Reminder: "+m.d));cell.appendChild(t)}});q.appendChild(cell)});
+  var top=fs.filter(function(m){return m.u&&m.i})[0]||fs.filter(function(m){return m.i})[0]||fs[0];
+  nx.textContent=top?"Suggested next job: "+top.t+(top.u&&top.i?" (urgent and important).":top.i?" (important).":"."):"Scan the inbox to get a suggested next job.";
+  kb.innerHTML="";CL[ci].k.forEach(function(k){var r=el("div","wkr",k[0]+": "+k[1]+"% (goal "+k[2]+"%)"),b=el("div"),f=el("i"),g=el("u");f.style.width=k[1]+"%";g.style.left=k[2]+"%";b.appendChild(f);b.appendChild(g);r.appendChild(b);kb.appendChild(r)})}
+ function scan(){if(timer)return;var c=ci;(function go(){if(cnt[c]<3){cnt[c]++;if(ci===c)draw();timer=setTimeout(function(){timer=null;go()},450);timer=timer||1}})()}
+ box.addEventListener("click",function(e){var a=e.target.getAttribute&&e.target.getAttribute("data-a");if(a==="scan")scan();if(a==="reset"){cnt[ci]=0;draw()}});
+ draw()}
+
+/* ---------- Projects section ---------- */
+var PJ=[
+{name:"Scripto AI",tag:"Windows desktop app",status:"In active development",cls:"",prev:pvScripto,
+ sum:["A Windows app that helps during live calls. It listens to the microphone and to the call audio separately, shows the conversation as it happens, and suggests an answer drawn only from the selected company's approved knowledge.","Call Center mode has company profiles, a knowledge base with clickable sources, a response coach and call history. Interview Assistant mode is for ethical mock-interview practice using a candidate profile, job description and resume."],
+ built:["Tauri 2","React","TypeScript","Rust","SQLite","Web Audio","Configurable speech-to-text and AI providers"],
+ shows:["Designing for two real workflows: call-centre support and interview practice","Handling live audio as two independent streams","Privacy-minded scope: transcript text and history are stored, not audio","An honest roadmap instead of overpromising"],
+ note:"Status: active development (build 0.6.x). Testing on real hardware and transcription benchmarking in English and Tagalog are in progress. Accounts, cross-device sync, paid plans and a macOS build are planned, not built. The product website is a pilot page."},
+{name:"Video Studio",tag:"Open-source short-form video editor",status:"In progress",cls:"prog",prev:pvVideo,
+ sum:["A local web app that turns raw phone footage or a written story idea into a finished vertical reel. It removes silent and off-camera sections, finds the speech with Whisper, adds captions with a hook, applies colour grades and a cinematic finish, and matches sound effects and music to each cut. Every decision is written to a report."],
+ built:["Python","Flask","FFmpeg","OpenCV","Groq (Whisper and a language model)","Kaggle (GPU runs of open-source video models)","Google Drive (planned)"],
+ shows:["Turning a repeatable editing process into an automated pipeline","Combining free open-source tools with free cloud tiers","Testing what works and documenting what does not, such as open-source video models distorting close-up faces"],
+ note:"Status: in progress. The core editor works; the studio and story mode are in testing. Planned next: Google Drive integration, voice narration and a video analyzer."},
+{name:"My Work Buddy",tag:"Workspace for virtual assistants with several clients",status:"Concept",cls:"plan",prev:pvBuddy,
+ sum:["An all-in-one workspace for a virtual assistant who supports more than one client. Pick a client, and the app switches to that client's own inbox, workflow, to-do list, calendar and goals, so nothing gets mixed up."],
+ plan:["An inbox that receives only emails related to the current job","Action items found by reviewing emails, turned into a to-do list","A calendar with reminders","Guidance on how to do each task","Suggestions for which job to do next","Urgent versus important sorting","Goals and KPIs calculated for each client"],
+ shows:["Product thinking from ten years of handling competing deadlines","Designing around a real virtual-assistant workflow"],
+ note:"Status: concept and planning. The preview uses made-up clients, emails and numbers to show the idea. The app is not built yet."}];
+var tabsEl=$("#pjtabs"),body=$("#pjbody");
+PJ.forEach(function(p,i){var b=el("button","pj");b.type="button";b.appendChild(el("b","",p.name));b.appendChild(el("small","",p.tag));b.appendChild(el("span","badge "+p.cls,p.status));b.onclick=function(){show(i)};tabsEl.appendChild(b)});
+function show(i){
+ Array.prototype.forEach.call(tabsEl.children,function(b,k){b.classList.toggle("on",k===i)});
+ var p=PJ[i];body.innerHTML="";var info=el("div","pjinfo"),pv=el("div","pvwrap");
+ info.appendChild(el("h3","",p.name));p.sum.forEach(function(t){info.appendChild(el("p","",t))});
+ if(p.built){info.appendChild(el("h4","","Built with"));info.appendChild(pills(p.built))}
+ if(p.plan){info.appendChild(el("h4","","Planned features"));var u=el("ul");p.plan.forEach(function(x){u.appendChild(el("li","",x))});info.appendChild(u)}
+ info.appendChild(el("h4","","What it shows"));var u2=el("ul");p.shows.forEach(function(x){u2.appendChild(el("li","",x))});info.appendChild(u2);
+ info.appendChild(el("div","pjnote",p.note));
+ body.appendChild(info);body.appendChild(pv);p.prev(pv)}
+show(0);
 })();
 </script>
 
