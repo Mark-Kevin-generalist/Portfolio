@@ -284,8 +284,10 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 #projects .pvwin{border-color:rgba(var(--g),.4);box-shadow:0 0 0 1px rgba(var(--g),.12),0 24px 60px rgba(0,0,0,.45),0 0 50px rgba(var(--w),.3)}
 #projects .pvbar{background:linear-gradient(90deg,rgba(var(--w),.55),rgba(var(--g),.12))}
 #projects .pvbar i:nth-child(1){background:#e5484d}#projects .pvbar i:nth-child(2){background:#e2bf7a}#projects .pvbar i:nth-child(3){background:#5fd4a0}
-#projects .pvwin.pvscripto{border:2px solid #f2ebe0;box-shadow:0 0 0 1px rgba(242,235,224,.25),0 24px 60px rgba(0,0,0,.45),0 0 36px rgba(242,235,224,.18)}
-#projects .pvscripto .sgif img{border-color:rgba(242,235,224,.6)}
+/* Scripto preview: cream window inside the gold border (ivory palette scoped to this window so text stays readable) */
+#projects .pvwin.pvscripto{--panel2:#f5efe4;--cream:#231419;--mute:#5b4a46;--ink:#faf5ec;--gold:#7a1f2b;--rose:#a3434f;--g:122,31,43;--r:163,67,79;--k:255,255,255;--line:rgba(122,31,43,.22);background:#f5efe4;color:#231419;border-color:rgba(226,191,122,.4);box-shadow:0 0 0 1px rgba(226,191,122,.12),0 24px 60px rgba(0,0,0,.45),0 0 50px rgba(122,31,43,.3)}
+#projects .pvscripto .pvbar{background:linear-gradient(90deg,#efe5d6,#f7f1e7)}
+#projects .pvscripto .sgif img{border-color:rgba(122,31,43,.3);box-shadow:0 8px 24px rgba(60,30,30,.18)}
 @media(prefers-reduced-motion:reduce){#projects .pj:hover{transform:none}}
 /* Scripto: app preview GIF, company card and live call bar */
 .sgif{margin:0 0 12px}.sgif img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;border:1px solid var(--line);background:#141010}
