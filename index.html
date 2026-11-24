@@ -18,7 +18,7 @@
 <meta name="theme-color" content="#0b0607">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&family=Anton&family=Bangers&family=Luckiest+Guy&family=Montserrat:wght@900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0b0607;--panel:#0f0809;--panel2:#080506;--panel3:#220d11;--wine:#7a1f2b;--gold:#e2bf7a;--rose:#e58b97;--cream:#f2ebe0;--mute:#cfc2b5;--ink:#1b0c0f;--line:rgba(var(--g),.22);
 --g:226,191,122;--w:122,31,43;--r:229,139,151;--s:15,8,9;--k:0,0,0;--hot:229,45,93;--wa:.4;--wb:.22;
@@ -279,7 +279,66 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .wtask{padding:5px 8px;margin-bottom:4px;border-radius:8px;background:rgba(var(--g),.12);line-height:1.3}.wtask small{display:block;color:var(--mute);font-size:11.5px}
 .wkpi{margin-top:10px}.wkr{margin-bottom:8px;font-size:13px}.wkr div{position:relative;height:8px;border-radius:4px;background:rgba(var(--g),.15);margin-top:4px}.wkr i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--gold)}.wkr u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--rose)}
 .wnext{margin-top:10px;padding:9px 11px;border:1px solid var(--gold);border-radius:10px;font-size:13.5px;background:rgba(var(--g),.07)}
-@media(max-width:900px){.pjtabs{grid-template-columns:1fr}.pjbody{grid-template-columns:1fr}.sgrid,.wgrid{grid-template-columns:1fr}}
+.pjtabs{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.badge.soon{border-color:var(--rose);color:var(--rose);background:rgba(var(--r),.1)}
+.badge.live{border-color:#5fd4a0;color:#5fd4a0}
+/* Scripto: company card and live call bar */
+.sco{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 12px;margin-bottom:12px;border:1px solid var(--line);border-radius:12px;background:rgba(var(--k),.3);font-size:13.5px}
+.sco h5{grid-column:1/-1;margin:0 0 4px;font:500 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sco dt{color:var(--mute)}.sco dd{margin:0;color:var(--cream)}
+.scall{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:var(--mute)}
+.scall .rec{width:9px;height:9px;border-radius:50%;background:var(--mute)}.scall.on .rec{background:#e5484d;box-shadow:0 0 0 0 rgba(229,72,77,.6);animation:recp 1.4s infinite}
+.scall .wave{display:flex;gap:2px;align-items:center;height:16px}.scall .wave i{width:3px;height:4px;border-radius:2px;background:rgba(var(--g),.6)}
+.scall.on .wave i{animation:wv .9s ease-in-out infinite}.scall.on .wave i:nth-child(2){animation-delay:.15s}.scall.on .wave i:nth-child(3){animation-delay:.3s}.scall.on .wave i:nth-child(4){animation-delay:.45s}.scall.on .wave i:nth-child(5){animation-delay:.6s}
+@keyframes wv{50%{height:16px}}@keyframes recp{70%{box-shadow:0 0 0 8px rgba(229,72,77,0)}}
+.scall b{color:var(--cream);font-weight:500;margin-left:auto;font-variant-numeric:tabular-nums}
+/* Video Studio: editor mock */
+.ved{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:12px}
+.vform{display:grid;gap:8px;font-size:13.5px}.vform label{display:grid;gap:3px;color:var(--mute);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.vform select,.vform input[type=text]{padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:rgba(var(--k),.35);color:var(--cream);font:inherit;font-size:14px;text-transform:none;letter-spacing:0}
+.vform .ck{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:13.5px;color:var(--cream)}
+.vdrop{padding:10px;border:1px dashed var(--line);border-radius:10px;color:var(--mute);font-size:13px}.vdrop span{display:inline-block;margin:3px 4px 0 0;padding:2px 8px;border-radius:999px;background:rgba(var(--g),.12);color:var(--cream);font-size:12px}
+.vphone{position:relative;aspect-ratio:9/16;max-height:340px;margin:0 auto;width:100%;max-width:200px;border-radius:18px;border:2px solid rgba(var(--g),.35);overflow:hidden;background:linear-gradient(160deg,#2a3b4f,#121a24 60%,#0b0f14)}
+.vphone .scene{position:absolute;inset:0;transition:filter .5s;background:radial-gradient(40% 30% at 50% 38%,rgba(255,214,170,.55),transparent 70%),radial-gradient(60% 40% at 50% 100%,rgba(40,60,90,.9),transparent 70%)}
+.vphone .hook{position:absolute;left:8%;right:8%;top:10%;text-align:center;font:400 19px/1.1 "Bangers","Impact",sans-serif;color:#ffd84a;-webkit-text-stroke:1px #000;text-shadow:2px 2px 0 #000;letter-spacing:.04em}
+.vphone .cap{position:absolute;left:6%;right:6%;bottom:16%;text-align:center;font:700 15px/1.15 var(--sans);color:#fff;-webkit-text-stroke:.6px #000;text-shadow:1px 1px 3px #000}.vphone .cap em{color:#ffd84a;font-style:normal}
+.vphone.cine::before,.vphone.cine::after{content:"";position:absolute;left:0;right:0;height:9%;background:#000;z-index:2}.vphone.cine::before{top:0}.vphone.cine::after{bottom:0}
+.vphone .vig{position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(0,0,0,.85);opacity:0;transition:opacity .5s}.vphone.cine .vig{opacity:1}
+.vphone .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.vprog{height:6px;border-radius:3px;background:rgba(var(--g),.15);overflow:hidden;margin-top:8px}.vprog i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.vstat{font-size:12.5px;color:var(--mute);margin-top:6px;min-height:18px}
+/* Artificial Admin: dashboard preview */
+.aa{display:grid;gap:10px}
+.aatop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px;color:var(--mute)}
+.aatop .pill2{padding:3px 10px;border-radius:999px;border:1px solid var(--line)}.aatop .off{border-color:#5fd4a0;color:#5fd4a0}
+.aagrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.aabrief{padding:10px 12px;border:1px solid var(--gold);border-radius:12px;background:rgba(var(--g),.06);font-size:14px}
+.aabrief h5,.aabox h5{margin:0 0 6px;font:500 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.aabrief ol{margin:0;padding-left:18px;display:grid;gap:4px}
+.aabox{padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(var(--k),.3);font-size:13px}
+.aarow{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid rgba(var(--g),.1)}.aarow:last-child{border-bottom:0}
+.aarow small{display:block;color:var(--mute);font-size:11.5px}
+.aatag{flex:none;align-self:center;padding:1px 8px;border-radius:999px;font-size:11px;border:1px solid var(--line);color:var(--mute)}.aatag.hot{border-color:var(--rose);color:var(--rose)}.aatag.ok{border-color:#5fd4a0;color:#5fd4a0}
+.aaask{display:flex;gap:8px}.aaask input{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(var(--k),.35);color:var(--cream);font:inherit;font-size:14px}
+.aaans{font-size:13.5px;color:var(--cream);min-height:20px}.aaans small{display:block;color:var(--gold);font-size:12px;margin-top:4px}
+/* Artemis live demo */
+.arte{display:grid;justify-items:center;gap:10px;text-align:center;padding:6px 0 2px}
+.arte .orbw{position:relative;width:200px;height:200px}
+.arte canvas{width:100%;height:100%;-webkit-mask-image:radial-gradient(circle,#000 58%,transparent 71%);mask-image:radial-gradient(circle,#000 58%,transparent 71%);transition:transform .5s,filter .5s;filter:drop-shadow(0 0 18px rgba(var(--ag,95,212,255),.35))}
+.arte.asleep canvas{transform:scale(.72);filter:grayscale(.5) brightness(.65)}
+.arte .say{font:500 30px/1.1 var(--serif);color:var(--cream)}.arte .say b{color:var(--gold);font-weight:600}
+.arte .ast{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--ag,95,212,255))}
+.arte .heard{font-size:13px;color:var(--mute);min-height:19px;font-style:italic}
+.athemes{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.athemes button{display:flex;align-items:center;gap:5px;padding:3px 10px 3px 3px;border:1px solid var(--line);border-radius:999px;background:none;cursor:pointer;font-size:12.5px;color:var(--mute)}
+.athemes button img{width:20px;height:20px}.athemes button.on{color:var(--cream);border-color:var(--gold);background:rgba(var(--g),.12)}
+.acloud{width:100%;max-height:210px;overflow-y:auto;display:grid;align-content:start;gap:8px;padding:10px;border:1px solid var(--line);border-radius:16px;background:rgba(var(--k),.3);text-align:left}
+.acloud:empty{display:none}
+.acloud .sm.them{border-color:rgba(var(--ag,95,212,255),.4)}
+.acta{display:inline-block;margin-top:6px;padding:5px 12px;border:1px solid var(--gold);border-radius:999px;color:var(--gold);font-size:13px}
+.atype{display:flex;gap:8px;width:100%}.atype input{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(var(--k),.35);color:var(--cream);font:inherit;font-size:14px}
+@media(max-width:900px){.pjtabs{grid-template-columns:1fr}.pjbody{grid-template-columns:1fr}.sgrid,.wgrid,.ved,.aagrid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.scall.on .wave i,.scall.on .rec{animation:none}}
 @media(prefers-reduced-motion:reduce){.vseg{transition:none}}
 .pill a{white-space:nowrap;padding:7px 14px}
 .panel.fit{min-height:0;padding-bottom:70px}
@@ -558,6 +617,7 @@ var G=[
 {n:"All",i:[
 ["Google AI Essentials (Specialization)","Google via Coursera · Completed 17 Nov 2026 · 5 courses (listed under Google AI courses)","google-ai-essentials"],
 ["Google AI Professional Certificate","Google via Coursera · Completed 16 Nov 2026 · 8 courses (listed under Google AI courses)","google-ai-professional-certificate"],
+["Claude Code 101 (Anthropic)","Certificate of completion · Nov 2026","anthropic-claude-code-101"],
 ["AI Fluency: Framework & Foundations (Anthropic)","Certificate of completion","anthropic-ai-fluency"],
 ["Claude 101 (DataCamp)","Completed 7 Nov 2026 · 2 hrs","claude-101"],
 ["Introduction to Microsoft Copilot (DataCamp)","Completed 4 Nov 2026 · 1 hr","microsoft-copilot-intro"],
@@ -594,6 +654,7 @@ var G=[
 {n:"AI and tools",i:[
 ["Google AI Essentials (Specialization)","Google via Coursera · Completed 17 Nov 2026 · 5 courses (listed under Google AI courses)","google-ai-essentials"],
 ["Google AI Professional Certificate","Google via Coursera · Completed 16 Nov 2026 · 8 courses (listed under Google AI courses)","google-ai-professional-certificate"],
+["Claude Code 101 (Anthropic)","Certificate of completion · Nov 2026","anthropic-claude-code-101"],
 ["AI Fluency: Framework & Foundations (Anthropic)","Certificate of completion","anthropic-ai-fluency"],
 ["Claude 101 (DataCamp)","Completed 7 Nov 2026 · 2 hrs","claude-101"],
 ["Introduction to Microsoft Copilot (DataCamp)","Completed 4 Nov 2026 · 1 hr","microsoft-copilot-intro"],
@@ -632,6 +693,7 @@ draw();$("#cmX").onclick=closeCert;
 var FEAT=[
 ["Google · Coursera","Google AI Professional Certificate","8 courses · 16 Nov 2026","google-ai-professional-certificate","https://coursera.org/verify/professional-cert/4GK37EKBWPPD","1000/773"],
 ["Google · Coursera","Google AI Essentials","5 courses · 17 Nov 2026","google-ai-essentials","https://coursera.org/verify/specialization/UB4X7ALQPPXF","1000/773"],
+["Anthropic","Claude Code 101","Certificate of completion · Nov 2026","anthropic-claude-code-101","","1000/773"],
 ["Anthropic","AI Fluency: Framework & Foundations","Certificate of completion","anthropic-ai-fluency","","1000/773"],
 ["DataCamp","Claude 101","2 hrs · 7 Nov 2026","claude-101","","1000/577"],
 ["DataCamp","Introduction to Microsoft Copilot","1 hr · 4 Nov 2026","microsoft-copilot-intro","","1000/577"]
@@ -675,14 +737,14 @@ var KB=[
 [["rate","salary","pay ","hourly","charge","cost","price"],"Mark's rates start at $6 per hour for permanent positions and $7.50 per hour for freelance tasks. Email him for a quote on a specific scope."],
 [["contact","email","phone","whatsapp","reach","call him","linkedin"],"You can email sacredmaui66@gmail.com, message him on WhatsApp at +63 966 412 5330, or find him on LinkedIn (linkedin.com/in/mark-kevin-inumerables-696220173)."],
 [["start","available","availability","notice","when can","hire him","immediately"],"Mark is ready to start immediately. He is based in the Philippines (UTC+8) and open to remote work."],
-[["certificate","certification","training","course","iq","predictive"],"Mark holds an EF SET English C2 certificate, a Speechace English screening (7.8/9), an IQ International certificate, a Predictive Index report, the Mercor Introduction to Agents and Introduction to Copilot courses, and Seagull shipboard training certificates with their assessment scores. He has completed Anthropic's AI Fluency: Framework & Foundations, the Google AI Professional Certificate (8 courses, 16 Nov 2026) and the Google AI Essentials specialization (5 courses, 17 Nov 2026) through Coursera, as well as DataCamp's Claude 101 (7 Nov 2026) and Introduction to Microsoft Copilot (4 Nov 2026) courses and is now training in GoHighLevel. You can open each certificate in the Certificates section of this page."],
+[["certificate","certification","training","course","iq","predictive"],"Mark holds an EF SET English C2 certificate, a Speechace English screening (7.8/9), an IQ International certificate, a Predictive Index report, the Mercor Introduction to Agents and Introduction to Copilot courses, and Seagull shipboard training certificates with their assessment scores. He has completed Anthropic's Claude Code 101 and AI Fluency: Framework & Foundations, the Google AI Professional Certificate (8 courses, 16 Nov 2026) and the Google AI Essentials specialization (5 courses, 17 Nov 2026) through Coursera, as well as DataCamp's Claude 101 (7 Nov 2026) and Introduction to Microsoft Copilot (4 Nov 2026) courses and is now training in GoHighLevel. You can open each certificate in the Certificates section of this page."],
 [["english","language","speak"],"Mark's English is certified at C2 on the EF SET (73/100) and 7.8/9 on the Speechace screening."],
 [["education","degree","school","college","study"],"Mark has an Associate Degree in Marine Transportation from John B. Lacson Colleges Foundation (2006 to 2011)."],
 [["customer","bpo","call center","support","collections"],"Before going to sea, Mark worked in customer service and collections at Teleperformance (Priceline.com), NCO Financial Systems (Credit One Bank) and Concentrix (Bell Canada)."],
 [["procurement","purchasing","supplier","quotation","purchase order"],"Mark supports procurement by reviewing requisitions, sourcing suppliers, requesting and comparing quotations against specifications, quality, price and delivery schedules, then coordinating order and delivery follow-up."],
 [["payroll","timesheet","salary administration"],"Mark has payroll administration experience supporting payroll entries, summaries and records, including organising source information for review. He does not claim independent end-to-end payroll processing."],
 [["automation","workflow","claude","gohighlevel","n8n","email ai"],"Mark is developing practical AI-assisted workflows, including email classification and summaries, extracting key details, drafting replies for human approval, routing customer support requests, CRM updates and collections reminders. He recently completed DataCamp's Claude 101 and Introduction to Microsoft Copilot courses and is now learning GoHighLevel; platform experience is presented honestly."],
-[["project","scripto","video studio","work buddy","portfolio project","built an app","building"],"Mark is building three projects, and each one is shown honestly with its status. Scripto AI is a Windows call-assistance desktop app with company knowledge, live suggested answers and a mock-interview mode (in active development). Video Studio is a Python, Flask and FFmpeg short-form video editor (core editor working, studio in testing). My Work Buddy is a planned workspace for virtual assistants with several clients, with a filtered inbox, to-do extraction, calendar, KPIs and priorities (concept stage). See the Projects section."],
+[["project","scripto","video studio","work buddy","artemis","artificial admin","voice assistant","portfolio project","built an app","building"],"Mark's projects are each shown honestly with their status. Scripto AI is a Windows call-assistance desktop app with company knowledge, live suggested answers and a mock-interview mode (in active development). Artemis is his working desktop voice assistant; you can try a cut-down version live in the Projects section, and he can build a similar assistant for your business. Artificial Admin is an upcoming offline-first AI assistant for ship administration (in planning). Video Studio is a Python, Flask and FFmpeg short-form video editor (core editor working, studio in testing). My Work Buddy is a planned workspace for virtual assistants with several clients, with a filtered inbox, to-do extraction, calendar, KPIs and priorities (concept stage). See the Projects section."],
 [["ai ","annotation","outlier","training data"],"Since October 2026 Mark has also worked as a freelance AI data annotator across several platforms."],
 [["role","position","looking for","open to","jobs"],"Mark is open to virtual assistant, administrative assistant, customer service and support, procurement assistant, logistics coordinator, sales admin, real estate admin, secretary, personal assistant, crewing officer and marine coordinator roles."],
 [["skill","tool","software","excel","google","slack","hubstaff"],"Mark works with Google Workspace, Excel, Slack, Hubstaff, Flux, Okta, GitHub and Microsoft Copilot, and handles document control, reporting and first-line IT support."],
@@ -709,6 +771,7 @@ addEventListener("keydown",function(e){if(e.key==="Escape"){if(!cm.hidden)closeC
 })();
 </script>
 
+<script src="assets/artemis/artemis-live.js"></script>
 <script>
 (function(){
 var $=function(q,r){return (r||document).querySelector(q)};
@@ -720,28 +783,39 @@ var CALL=[
 {who:"Customer",text:"My internet keeps dropping every evening. Can you help?",sug:"I'm sorry about that, and I can help. Let me confirm your account name first, then we'll check what the lights on the router show.",tip:"Acknowledge first, then confirm identity before troubleshooting.",src:"Troubleshooting guide (sample)"},
 {who:"Agent",text:"Of course. May I have the account name, and what colour is the light on the router?"},
 {who:"Customer",text:"It's under the Reyes household. The light is blinking orange.",sug:"Thank you. A blinking orange light usually points to a line issue. Please restart the router, and I'll check the line from my side.",tip:"Say what you will do next, and how long it takes.",src:"Router lights reference (sample)"},
-{who:"Customer",text:"How much is the faster plan?",sug:"I can confirm the exact monthly price from the plan sheet. May I check which plans are available at your address?",tip:"Use approved pricing only. Never guess.",src:"Plan sheet (sample)"}];
+{who:"Agent",text:"Thank you. Please restart the router now. I'm checking the line from here."},
+{who:"Customer",text:"Okay, it's back on. The light is green now.",sug:"The line test is clear on my side too. If it drops again tonight, I can book a technician visit within 48 hours at no charge.",tip:"Confirm the fix, then offer the next step from policy.",src:"Service policy: free technician visit (sample)"},
+{who:"Customer",text:"How much is the faster plan?",sug:"Fiber 300 is ₱1,899 a month, ₱400 more than your current plan, with a free upgrade on your next bill. Would you like me to send the details by text?",tip:"Use approved pricing only. Never guess.",src:"Plan sheet, Nov 2026 (sample)"},
+{who:"Agent",text:"Fiber 300 is ₱1,899 a month. I can send you the details by text."},
+{who:"Customer",text:"Yes please. Thanks for the help!",sug:"You're welcome! I've sent the plan details, and your case number is BF-20931. Is there anything else I can help with today?",tip:"Close with the case number and an open question.",src:"Call closing script (sample)"}];
+var COMPANY=[["Company","Bayline Fiber (fictional)"],["Industry","Home internet provider"],["Hours","8 am to 10 pm, every day"],["Plans","Fiber 100 ₱1,499 · Fiber 300 ₱1,899"],["Policy","Free technician visit within 48 hours"],["Tone","Warm, short, no jargon"],["Knowledge","Troubleshooting guide, router lights, plan sheet, closing script"]];
+var CANDIDATE=[["Role","Virtual Assistant (sample job post)"],["Profile","Admin support, 10 years, remote-ready"],["Uploaded","Resume, job description, notes"],["Mode","Practice only, your own answers"]];
 var INT=[
 {who:"Interviewer",text:"Tell me about a time you handled a tight deadline.",sug:"Use your own real example. Start with the situation and the deadline, then what you did, then the result.",tip:"Keep it under two minutes and end on the outcome.",src:"Your resume and the job description (sample)"},
 {who:"You",text:"(You answer with your own example.)"},
 {who:"Interviewer",text:"Which tools do you use to stay organised?",sug:"Name the tools you have actually used, and one habit that shows how you use them.",tip:"Be specific. Don't list tools you haven't used.",src:"Candidate profile (sample)"}];
 function pvScripto(box){
- var mode="Call Center",step=-1;
- box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>Scripto AI &middot; interface preview with sample dialogue</span></div><div class="pvbody"><div class="pvtabs"></div><div class="sgrid"><div class="sthread"></div><div class="sside"><div class="slab">Suggested answer</div><div class="ssug"></div><div class="stip"></div><div class="ssrc"></div></div></div><div class="pvctl"><button class="btn" type="button" data-a="next">Next line &#9656;</button><button class="btn" type="button" data-a="reset">Reset</button></div><p class="pvnote"></p></div></div>';
- var tabs=$(".pvtabs",box),th=$(".sthread",box),sug=$(".ssug",box),tip=$(".stip",box),src=$(".ssrc",box),note=$(".pvnote",box),nx=$("[data-a=next]",box);
+ var mode="Call Center",step=-1,auto=null,secs=0,clock=null;
+ box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>Scripto AI &middot; interface preview with a mock call</span></div><div class="pvbody"><div class="pvtabs"></div><dl class="sco"></dl><div class="scall"><span class="rec"></span><span class="wave"><i></i><i></i><i></i><i></i><i></i></span><span class="cst">Mic and call audio: ready</span><b class="ctime">00:00</b></div><div class="sgrid"><div class="sthread"></div><div class="sside"><div class="slab">Suggested answer</div><div class="ssug"></div><div class="stip"></div><div class="ssrc"></div></div></div><div class="pvctl"><button class="btn" type="button" data-a="play">&#9654; Play mock call</button><button class="btn" type="button" data-a="next">Next line &#9656;</button><button class="btn" type="button" data-a="reset">Reset</button></div><p class="pvnote"></p></div></div>';
+ var tabs=$(".pvtabs",box),th=$(".sthread",box),sug=$(".ssug",box),tip=$(".stip",box),src=$(".ssrc",box),note=$(".pvnote",box),nx=$("[data-a=next]",box),pl=$("[data-a=play]",box),co=$(".sco",box),cb=$(".scall",box);
  function data(){return mode==="Call Center"?CALL:INT}
+ function stop(){clearTimeout(auto);auto=null;clearInterval(clock);clock=null;cb.classList.remove("on");pl.disabled=false}
+ function tick(){secs++;$(".ctime",box).textContent=("0"+Math.floor(secs/60)).slice(-2)+":"+("0"+secs%60).slice(-2)}
+ function play(){if(auto)return;if(step>=data().length-1)step=-1;cb.classList.add("on");pl.disabled=true;if(!clock)clock=setInterval(tick,1000);(function go(){if(step<data().length-1){step++;draw();auto=setTimeout(go,data()[step].sug?3600:2000)}else{stop();$(".cst",box).textContent="Call ended · transcript saved, audio not stored"}})()}
  function draw(){
-  tabs.innerHTML="";["Call Center","Interview Assistant"].forEach(function(m){var b=el("button",m===mode?"on":"",m);b.type="button";b.onclick=function(){mode=m;step=-1;draw()};tabs.appendChild(b)});
+  tabs.innerHTML="";["Call Center","Interview Assistant"].forEach(function(m){var b=el("button",m===mode?"on":"",m);b.type="button";b.onclick=function(){stop();mode=m;step=-1;secs=0;$(".ctime",box).textContent="00:00";draw()};tabs.appendChild(b)});
+  co.innerHTML="";co.appendChild(el("h5","",mode==="Call Center"?"Company profile loaded":"Candidate profile loaded"));(mode==="Call Center"?COMPANY:CANDIDATE).forEach(function(r){co.appendChild(el("dt","",r[0]));co.appendChild(el("dd","",r[1]))});
+  if(!auto)$(".cst",box).textContent=step<0?(mode==="Call Center"?"Mic and call audio: ready":"Practice session: ready"):(mode==="Call Center"?"Mic and call audio: paused":"Practice session: paused");else $(".cst",box).textContent=mode==="Call Center"?"Live call · transcribing mic and call audio separately":"Live practice · transcribing";
   th.innerHTML="";var d=data();
   if(step<0)th.appendChild(el("p","pvhint","Press Next line to play the sample conversation."));
   for(var i=0;i<=step;i++){var l=d[i],mine=(l.who==="Agent"||l.who==="You"),m=el("div","sm "+(mine?"me":"them"));m.appendChild(el("small","",l.who));m.appendChild(el("span","",l.text));th.appendChild(m)}
   th.scrollTop=th.scrollHeight;
-  var cur=step>=0?d[step]:null;
+  var cur=step>=0?d[step]:null;if(cur&&!cur.sug&&mode==="Call Center"){for(var j=step;j>=0;j--){if(d[j].sug){cur=d[j];break}}}
   if(cur&&cur.sug){sug.textContent=cur.sug;sug.classList.remove("mute");tip.textContent=cur.tip;src.textContent="Source: "+cur.src}
   else{sug.textContent=cur?"This is your own line, so no suggestion is needed.":"Waiting for the first line...";sug.classList.add("mute");tip.textContent="";src.textContent=""}
   nx.disabled=step>=d.length-1;
   note.textContent=mode==="Call Center"?"Sample dialogue with a fictional company. In the real app the microphone and the call audio are transcribed as two separate streams, and only transcript text is stored, not audio.":"Interview Assistant is for ethical mock-interview practice, using your own profile, job description and resume."}
- box.addEventListener("click",function(e){var a=e.target.getAttribute&&e.target.getAttribute("data-a");if(a==="next"&&step<data().length-1){step++;draw()}if(a==="reset"){step=-1;draw()}});
+ box.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("[data-a]"),a=t&&t.getAttribute("data-a");if(a==="play")play();if(a==="next"&&step<data().length-1){stop();step++;draw()}if(a==="reset"){stop();step=-1;secs=0;$(".ctime",box).textContent="00:00";draw()}});
  draw()}
 
 /* ---------- Video Studio ---------- */
@@ -755,7 +829,26 @@ var VST=[
 {n:"Grade, finish and flashes",d:"A colour grade and optional cinematic finish are applied, and a quick flash marks each cut."},
 {n:"Sound effects and music",d:"Effects are matched to the cuts, and low-volume music fades out at the end."},
 {n:"Decision report",d:"Every decision is written to a report, so the edit can be checked and improved.",rep:["Face check result and how reliable it was","Sections removed, and why","Words dropped from the transcript","Style and grade chosen","Cuts, effects and music used"]}];
+var VGRADE={auto:"none",bright:"contrast(1.2) saturate(1.35) brightness(1.05)",cinematic:"contrast(1.18) saturate(.85) hue-rotate(-8deg)",warm:"contrast(1.1) saturate(1.1) sepia(.25)",hype:"contrast(1.3) saturate(1.5)",noir:"grayscale(1) contrast(1.25)",none:"none"};
+var VSTYLE={bright_social:"bright",cinematic:"cinematic",emotional_story:"warm",hype_impact:"hype",montage:"hype",comedy:"bright"};
+var VCAPS=["We almost <em>missed</em> the ferry","Then the sky turned <em>gold</em>","Best day of the <em>trip</em>"];
 function pvVideo(box){
+ var view=0;
+ box.innerHTML='<div class="pvtabs" style="margin-bottom:10px"><button type="button" class="on">Studio website</button><button type="button">How a reel is made</button></div><div class="vview"></div>';
+ var bt=box.querySelectorAll(".pvtabs button"),vv=$(".vview",box);
+ function go(i){view=i;bt.forEach(function(b,k){b.classList.toggle("on",k===i)});vv.innerHTML="";(i===0?pvVideoSite:pvVideoFlow)(vv)}
+ bt.forEach(function(b,k){b.onclick=function(){go(k)}});go(0)}
+function pvVideoSite(box){
+ var timer=null;
+ box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>Video Studio &middot; studio page preview (sample clips)</span></div><div class="pvbody"><div class="ved"><form class="vform" onsubmit="return false"><div class="vdrop">Clips added, joined in file-name order:<br><span>01_arrival.mp4</span><span>02_ferry.mp4</span><span>03_sunset.mp4</span></div><label>Story idea or context<input type="text" value="Island day trip with friends"></label><label>Hook text<input type="text" class="vhk" value="WE ALMOST MISSED IT"></label><label>Edit style<select class="vst"><option>bright_social</option><option>cinematic</option><option>emotional_story</option><option>hype_impact</option><option>montage</option><option>comedy</option></select></label><label>Color grade<select class="vgr"><option>auto</option><option>bright</option><option>cinematic</option><option>warm</option><option>hype</option><option>noir</option><option>none</option></select></label><label>Caption font<select class="vfo"><option>Bangers</option><option>Anton</option><option>Luckiest Guy</option><option>Montserrat Black</option></select></label><label>Music mood<select><option>auto</option><option>upbeat</option><option>cinematic</option><option>hardhit</option><option>none</option></select></label><label class="ck"><input type="checkbox" class="vci"> Cinematic finish (letterbox, vignette, grain)</label><label class="ck"><input type="checkbox" class="vfl" checked> White flash and sound at each cut</label></form><div><div class="vphone"><div class="scene"></div><div class="vig"></div><div class="hook"></div><div class="cap"></div><div class="flash"></div></div><div class="pvctl" style="justify-content:center"><button class="btn" type="button" data-a="run">Start the studio</button></div><div class="vprog"><i></i></div><div class="vstat">Change the options to see the look update.</div></div></div><p class="pvnote">A simulated studio page. Nothing is uploaded or rendered here; the real studio runs on a PC with FFmpeg, OpenCV and Whisper.</p></div></div>';
+ var ph=$(".vphone",box),sc=$(".scene",box),hk=$(".hook",box),cp=$(".cap",box),fl=$(".flash",box),pr=$(".vprog i",box),stt=$(".vstat",box),gr=$(".vgr",box),sty=$(".vst",box);
+ function look(){var g=gr.value==="auto"?VSTYLE[sty.value]:gr.value;sc.style.filter=VGRADE[g]||"none";ph.classList.toggle("cine",$(".vci",box).checked);hk.textContent=$(".vhk",box).value;var f=$(".vfo",box).value;hk.style.fontFamily='"'+f+'","Impact",sans-serif';cp.innerHTML=VCAPS[0]}
+ box.addEventListener("input",look);box.addEventListener("change",look);
+ sty.addEventListener("change",function(){if(sty.value==="cinematic"||sty.value==="emotional_story")$(".vci",box).checked=true;look()});
+ var STEPS=["Joining 3 clips and scaling to 9:16","Checking faces and silent gaps","Transcribing speech with word timestamps","Cutting 4 silent and off-camera sections","Adding hook and captions","Applying the grade and finish","Matching sound effects and music","Writing the decision report","Done: reel_final.mp4 (0:28) and report.json"];
+ $("[data-a=run]",box).onclick=function(){if(timer)return;var k=0,b=this;b.disabled=true;(function go(){stt.textContent=STEPS[k];pr.style.width=Math.round((k+1)/STEPS.length*100)+"%";if(k>=4)cp.innerHTML=VCAPS[(k-4)%VCAPS.length];if(k===3&&$(".vfl",box).checked&&fl.animate)fl.animate([{opacity:.9},{opacity:0}],{duration:260});k++;if(k<STEPS.length)timer=setTimeout(go,900);else{timer=null;b.disabled=false;b.textContent="Run again"}})()};
+ look()}
+function pvVideoFlow(box){
  var step=0;
  box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>Video Studio &middot; how one reel is made (illustrative timeline)</span></div><div class="pvbody"><div class="vsteps"></div><div class="vleg"></div><div class="vtl"></div><div class="vrow vcaps"></div><div class="vmusic"></div><div class="vdesc"></div><p class="pvnote">Illustrative timeline, not real footage. Click the numbers to move through the steps.</p></div></div>';
  var st=$(".vsteps",box),leg=$(".vleg",box),tl=$(".vtl",box),caps=$(".vcaps",box),mus=$(".vmusic",box),desc=$(".vdesc",box);
@@ -806,6 +899,26 @@ function pvBuddy(box){
  box.addEventListener("click",function(e){var a=e.target.getAttribute&&e.target.getAttribute("data-a");if(a==="scan")scan();if(a==="reset"){cnt[ci]=0;draw()}});
  draw()}
 
+/* ---------- Artificial Admin (upcoming) ---------- */
+var AAMAIL=[
+ {f:"Port agent, Rotterdam",s:"Pre-arrival documents due before ETA",c:"Port and agency",d:"Due in 6 h",h:1},
+ {f:"Flag state",s:"Safety Management Certificate audit window opens",c:"Certificates",d:"In 12 days",h:0},
+ {f:"Technical superintendent",s:"Spare parts quotation needs Master's approval",c:"Procurement",d:"Today",h:1},
+ {f:"Crewing office",s:"Crew change list for next port",c:"Crew",d:"In 3 days",h:0},
+ {f:"Charterer",s:"Updated voyage instructions",c:"Voyage",d:"Read",h:0}];
+var AAQA=[
+ [["certificate","expire","expiry"],"Two certificates expire within 60 days: the Ship Sanitation Certificate (in 41 days) and the radio survey (in 55 days).","Sources: certificate register, flag state email of 12 Nov (sample)"],
+ [["port","arrival","eta","rotterdam","document"],"For Rotterdam you still owe the crew list, the waste notification and the security declaration. The agent needs them 6 hours before arrival.","Source: port agent email, 22 Nov (sample)"],
+ [["spare","quotation","purchase","order"],"The superintendent's quotation is waiting for the Master's approval. The cheapest of three suppliers meets the spec and delivers before departure.","Source: procurement thread, 3 emails (sample)"],
+ [["crew","change","sign"],"Four crew sign off at the next port, with relievers confirmed. Two travel documents are still missing.","Source: crewing office email, 21 Nov (sample)"]];
+function pvAdmin(box){
+ box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>Artificial Admin &middot; dashboard concept with a sample vessel</span></div><div class="pvbody aa"><div class="aatop"><span class="pill2">MV Sample Star (fictional)</span><span class="pill2 off">● Works offline</span><span class="pill2">Data used today: 1.2 MB</span><span class="pill2">48 emails sorted</span></div><div class="aabrief"><h5>Captain&rsquo;s brief &middot; what needs you today</h5><ol><li>Send the pre-arrival documents to the Rotterdam agent (6 h left).</li><li>Approve the spare parts quotation.</li><li>Plan the Safety Management Certificate audit (12 days).</li></ol></div><div class="aagrid"><div class="aabox"><h5>Inbox, sorted and tracked</h5><div class="aaml"></div></div><div class="aabox"><h5>Ask the inbox (offline)</h5><div class="aaask"><input placeholder="e.g. Which certificates expire soon?" aria-label="Ask the inbox"><button class="btn" type="button" data-a="ask" style="padding:7px 14px;font-size:13.5px">Ask</button></div><div class="pvtabs aach" style="margin:8px 0 6px"></div><div class="aaans"></div><h5 style="margin-top:10px">Draft reply</h5><div class="aaans aadr">Select an email to see a draft. Nothing is sent without the Captain&rsquo;s approval.</div></div></div><p class="pvnote">Concept preview. The vessel, emails and answers are made up; the app is in planning with a backend prototype.</p></div></div>';
+ var ml=$(".aaml",box),ans=$(".aaans",box),dr=$(".aadr",box),inp=$(".aaask input",box);
+ AAMAIL.forEach(function(m){var r=el("div","aarow");r.style.cursor="pointer";var t=el("div");t.appendChild(el("span","",m.s));t.appendChild(el("small","",m.f+" · "+m.c));r.appendChild(t);r.appendChild(el("span","aatag"+(m.h?" hot":""),m.d));r.onclick=function(){dr.textContent="Dear "+m.f.split(",")[0]+", thank you for your email about “"+m.s.toLowerCase()+"”. We are on it and will confirm shortly. Regards, Master (draft waiting for approval)"};ml.appendChild(r)});
+ function ask(q){var t=" "+q.toLowerCase()+" ",hit=AAQA.filter(function(a){return a[0].some(function(w){return t.indexOf(w)>-1})})[0];ans.innerHTML="";if(!q.trim())return;if(hit){ans.appendChild(document.createTextNode(hit[1]));ans.appendChild(el("small","",hit[2]))}else{ans.appendChild(document.createTextNode("In the full app this answers from the ship's own emails and documents. In this preview, try one of the sample questions."))}}
+ ["Which certificates expire soon?","What do I owe for Rotterdam?","Any crew changes?"].forEach(function(q){var b=el("button","",q);b.type="button";b.onclick=function(){inp.value=q;ask(q)};$(".aach",box).appendChild(b)});
+ $("[data-a=ask]",box).onclick=function(){ask(inp.value)};inp.onkeydown=function(e){if(e.key==="Enter"){e.preventDefault();ask(inp.value)}}}
+
 /* ---------- Projects section ---------- */
 var PJ=[
 {name:"Scripto AI",tag:"Windows desktop app",status:"In active development",cls:"",prev:pvScripto,
@@ -813,11 +926,21 @@ var PJ=[
  built:["Tauri 2","React","TypeScript","Rust","SQLite","Web Audio","Configurable speech-to-text and AI providers"],
  shows:["Designing for two real workflows: call-centre support and interview practice","Handling live audio as two independent streams","Privacy-minded scope: transcript text and history are stored, not audio","An honest roadmap instead of overpromising"],
  note:"Status: active development (build 0.6.x). Testing on real hardware and transcription benchmarking in English and Tagalog are in progress. Accounts, cross-device sync, paid plans and a macOS build are planned, not built. The product website is a pilot page."},
+{name:"Artemis",tag:"Desktop voice assistant · try it live",status:"Working · live demo",cls:"live",prev:function(b){window.pvArtemis?window.pvArtemis(b):b.textContent="Loading the Artemis demo..."},
+ sum:["Artemis is the voice assistant I built for my own PC. Say her name and a glowing orb appears; she listens, answers out loud, and can work on files, search the web and open pages, always asking for a spoken “yes” before anything risky.","This demo runs in your browser. Allow the microphone, say “Artemis”, and she will greet you and answer a few basic questions. The real assistant can do much more, and I can build one like her for your business."],
+ built:["Node.js","Windows PowerShell and WPF","Offline wake word (sherpa-onnx)","Speech-to-text with free fallbacks","Natural text-to-speech voices","Claude, with Groq, Gemini and a local model as backups"],
+ shows:["Building a working AI product end to end, not just a mock-up","Safety by design: risky actions need a spoken yes that expires after 90 seconds","Keeping costs near zero with free tiers and an offline brain","Six animated orb themes: Classic, Flame, Electric, Wind, Water and Earth"],
+ note:"Status: working daily on my own PC. This web demo is a cut-down version: basic answers only, no access to anything on your device. In Chrome and Edge, the browser's own speech service turns your voice into text; nothing is recorded or saved by this site."},
 {name:"Video Studio",tag:"Open-source short-form video editor",status:"In progress",cls:"prog",prev:pvVideo,
  sum:["A local web app that turns raw phone footage or a written story idea into a finished vertical reel. It removes silent and off-camera sections, finds the speech with Whisper, adds captions with a hook, applies colour grades and a cinematic finish, and matches sound effects and music to each cut. Every decision is written to a report."],
  built:["Python","Flask","FFmpeg","OpenCV","Groq (Whisper and a language model)","Kaggle (GPU runs of open-source video models)","Google Drive (planned)"],
  shows:["Turning a repeatable editing process into an automated pipeline","Combining free open-source tools with free cloud tiers","Testing what works and documenting what does not, such as open-source video models distorting close-up faces"],
  note:"Status: in progress. The core editor works; the studio and story mode are in testing. Planned next: Google Drive integration, voice narration and a video analyzer."},
+{name:"Artificial Admin",tag:"AI assistant for ship administration",status:"Upcoming",cls:"soon",prev:pvAdmin,
+ sum:["An installable AI assistant that takes on most of the paperwork of a ship's administrative officer. It reads and sorts the ship's Microsoft 365 email, tracks every instruction and deadline, keeps certificates and documents in order, and gives the Captain a short daily brief of what needs attention.","It is built for life at sea: it keeps working offline with a small AI model on the ship's PC, uses very little satellite data, and moves to stronger cloud models when the connection allows. Human authority stays with the Captain; nothing is sent without approval."],
+ plan:["A Captain's brief: what needs you today","Email sorted into port, certificates, procurement, crew and voyage","Deadlines and actions with countdowns, each linked to its source email","Ask the inbox offline, with cited sources","Draft replies that send only after approval","Certificate expiry alerts and handover reports","Later: crew admin, procurement, fleet dashboard for the office"],
+ shows:["Ten years of shipboard administration turned into a product","Designing for real constraints: offline, low bandwidth, strict cyber rules","Human-in-the-loop AI that quotes its sources"],
+ note:"Status: upcoming. It is in planning, with an early backend prototype; the app is not released yet. The preview uses a made-up vessel and sample emails."},
 {name:"My Work Buddy",tag:"Workspace for virtual assistants with several clients",status:"Concept",cls:"plan",prev:pvBuddy,
  sum:["An all-in-one workspace for a virtual assistant who supports more than one client. Pick a client, and the app switches to that client's own inbox, workflow, to-do list, calendar and goals, so nothing gets mixed up."],
  plan:["An inbox that receives only emails related to the current job","Action items found by reviewing emails, turned into a to-do list","A calendar with reminders","Guidance on how to do each task","Suggestions for which job to do next","Urgent versus important sorting","Goals and KPIs calculated for each client"],
