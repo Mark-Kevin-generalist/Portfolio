@@ -24,19 +24,6 @@
 --g:226,191,122;--w:122,31,43;--r:229,139,151;--s:15,8,9;--k:0,0,0;--hot:229,45,93;--wa:.4;--wb:.22;
 --serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
 
-/* ===== Theme chooser (temporary: 3 options to compare) ===== */
-html[data-theme=navy]{--bg:#050a14;--panel:#0a1424;--panel2:#060c18;--panel3:#10213d;--wine:#1f4a8a;--gold:#dcb46e;--rose:#8fb0e6;--cream:#eef1f6;--mute:#b9c3d3;--ink:#0a1424;--line:rgba(220,180,110,.24);--g:220,180,110;--w:31,74,138;--r:143,176,230;--s:8,15,30;--k:0,0,0;--hot:70,120,220;--wa:.45;--wb:.25}
-html[data-theme=ivory],html:not([data-theme=navy]):not([data-theme=ivory]) #experience,html:not([data-theme=navy]):not([data-theme=ivory]) #certificates{--bg:#f3ece0;--panel:#faf5ec;--panel2:#f1e8da;--panel3:#e8d8c8;--wine:#7a1f2b;--gold:#7a1f2b;--rose:#a3434f;--cream:#231419;--mute:#5b4a46;--ink:#faf5ec;--line:rgba(122,31,43,.24);--g:122,31,43;--w:122,31,43;--r:163,67,79;--s:250,245,236;--k:255,255,255;--hot:122,31,43;--wa:.09;--wb:.06;color:var(--cream)}
-html[data-theme=ivory] .hero-embers,html[data-theme=ivory] .orbit-particle{display:none!important}
-html[data-theme=ivory] .hi,html:not([data-theme=navy]):not([data-theme=ivory]) #experience .hi,html:not([data-theme=navy]):not([data-theme=ivory]) #certificates .hi{text-shadow:none}
-html[data-theme=ivory] .panel::before{opacity:.12}
-html[data-theme=ivory] .chat,html[data-theme=ivory] .pvwin{box-shadow:0 18px 50px rgba(60,30,30,.18)}
-.themer{position:fixed;left:16px;bottom:16px;z-index:55;display:flex;align-items:center;gap:4px;padding:5px 6px 5px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(var(--s),.9);backdrop-filter:blur(12px);font-size:13.5px;color:var(--mute);box-shadow:0 8px 28px rgba(0,0,0,.25)}
-.themer>span{margin-right:4px}
-.themer button{display:inline-flex;align-items:center;gap:7px;padding:5px 11px 5px 6px;border:1px solid transparent;border-radius:999px;background:none;cursor:pointer;color:var(--cream);font-size:13.5px}
-.themer button i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(128,128,128,.5)}
-.themer button.on{border-color:var(--gold);background:rgba(var(--g),.12)}
-@media(max-width:560px){.themer{left:10px;bottom:10px;padding-left:10px}.themer button{padding:5px 8px 5px 5px}.themer button b{display:none}.themer>span{font-size:12.5px}}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--cream);font:400 16.5px/1.6 var(--sans);padding:10px}
@@ -366,7 +353,6 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .email-choice-close{margin-top:14px;width:100%;border:0;background:transparent;color:rgba(255,245,230,.65);padding:8px;cursor:pointer;font:inherit}
 
 </style>
-<script>try{var q=new URLSearchParams(location.search).get("theme"),t=["burgundy","navy","ivory"].indexOf(q)>-1?q:localStorage.getItem("pf-theme");if(["burgundy","navy","ivory"].indexOf(t)>-1)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
 
@@ -988,16 +974,5 @@ show(0);
 })();
 </script>
 
-<div class="themer" id="themer" role="group" aria-label="Theme chooser (temporary, for comparing looks)"><span>Theme</span>
-<button type="button" data-t="burgundy" aria-label="Burgundy and gold theme"><i style="background:linear-gradient(135deg,#7a1f2b 50%,#e2bf7a 50%)"></i><b>Burgundy</b></button>
-<button type="button" data-t="navy" aria-label="Navy and gold theme"><i style="background:linear-gradient(135deg,#10213d 50%,#dcb46e 50%)"></i><b>Navy</b></button>
-<button type="button" data-t="ivory" aria-label="Ivory and burgundy theme"><i style="background:linear-gradient(135deg,#f3ece0 50%,#7a1f2b 50%)"></i><b>Ivory</b></button></div>
-<script>
-(function(){var h=document.documentElement,bs=document.querySelectorAll("#themer button");
-function cur(){var t=h.getAttribute("data-theme");return t==="navy"||t==="ivory"?t:"burgundy"}
-function mark(){bs.forEach(function(b){var on=b.getAttribute("data-t")===cur();b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)})}
-bs.forEach(function(b){b.onclick=function(){var t=b.getAttribute("data-t");h.setAttribute("data-theme",t);try{localStorage.setItem("pf-theme",t)}catch(e){}mark()}});
-mark()})();
-</script>
 </body>
 </html>
