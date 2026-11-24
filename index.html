@@ -765,21 +765,21 @@ function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null
 function pills(a){var w=el("div","chips");a.forEach(function(x){w.appendChild(el("span","",x))});return w}
 
 /* ---------- Scripto AI ---------- */
-var CALL=[
-{who:"Customer",text:"My internet keeps dropping every evening. Can you help?",sug:"I'm sorry about that, and I can help. Let me confirm your account name first, then we'll check what the lights on the router show.",tip:"Acknowledge first, then confirm identity before troubleshooting.",src:"Troubleshooting guide (sample)"},
-{who:"Agent",text:"Of course. May I have the account name, and what colour is the light on the router?"},
-{who:"Customer",text:"It's under the Reyes household. The light is blinking orange.",sug:"Thank you. A blinking orange light usually points to a line issue. Please restart the router, and I'll check the line from my side.",tip:"Say what you will do next, and how long it takes.",src:"Router lights reference (sample)"},
-{who:"Agent",text:"Thank you. Please restart the router now. I'm checking the line from here."},
-{who:"Customer",text:"Okay, it's back on. The light is green now.",sug:"The line test is clear on my side too. If it drops again tonight, I can book a technician visit within 48 hours at no charge.",tip:"Confirm the fix, then offer the next step from policy.",src:"Service policy: free technician visit (sample)"},
-{who:"Customer",text:"How much is the faster plan?",sug:"Fiber 300 is ₱1,899 a month, ₱400 more than your current plan, with a free upgrade on your next bill. Would you like me to send the details by text?",tip:"Use approved pricing only. Never guess.",src:"Plan sheet, Nov 2026 (sample)"},
-{who:"Agent",text:"Fiber 300 is ₱1,899 a month. I can send you the details by text."},
-{who:"Customer",text:"Yes please. Thanks for the help!",sug:"You're welcome! I've sent the plan details, and your case number is BF-20931. Is there anything else I can help with today?",tip:"Close with the case number and an open question.",src:"Call closing script (sample)"}];
+/* Each question line carries the suggestion; the reply line that follows reads that suggestion word for word. */
+function said(lines,who){var out=[];lines.forEach(function(l){out.push(l);if(l.sug)out.push({who:who,text:l.sug,read:1})});return out}
+var CALL=said([
+{who:"Customer",text:"My internet keeps dropping every evening. Can you help?",sug:"I'm sorry about that, and I can help. May I have the account name, and what colour is the light on your router right now?",tip:"Acknowledge first, then confirm identity before troubleshooting.",src:"Troubleshooting guide (sample)"},
+{who:"Customer",text:"It's under the Reyes household. The light is blinking orange.",sug:"Thank you. A blinking orange light usually means a line issue. Please restart the router now, and I'll check the line from my side while it comes back on.",tip:"Say what you will do next, and how long it takes.",src:"Router lights reference (sample)"},
+{who:"Customer",text:"Okay, it's back on. The light is green now.",sug:"Great, the line test is clear on my side too. If it drops again tonight, I can book a technician visit within 48 hours at no charge.",tip:"Confirm the fix, then offer the next step from policy.",src:"Service policy: free technician visit (sample)"},
+{who:"Customer",text:"How much is the faster plan?",sug:"Fiber 300 is ₱1,899 a month, which is ₱400 more than your current plan. Would you like me to send the details to you by text?",tip:"Use approved pricing only. Never guess.",src:"Plan sheet, Nov 2026 (sample)"},
+{who:"Customer",text:"Yes please. Thanks for the help!",sug:"You're welcome! I've sent the plan details, and your case number is BF-20931. Is there anything else I can help you with today?",tip:"Close with the case number and an open question.",src:"Call closing script (sample)"}],"Agent");
 var COMPANY=[["Company","Bayline Fiber (fictional)"],["Industry","Home internet provider"],["Hours","8 am to 10 pm, every day"],["Plans","Fiber 100 ₱1,499 · Fiber 300 ₱1,899"],["Policy","Free technician visit within 48 hours"],["Tone","Warm, short, no jargon"],["Knowledge","Troubleshooting guide, router lights, plan sheet, closing script"]];
-var CANDIDATE=[["Role","Virtual Assistant (sample job post)"],["Profile","Admin support, 10 years, remote-ready"],["Uploaded","Resume, job description, notes"],["Mode","Practice only, your own answers"]];
-var INT=[
-{who:"Interviewer",text:"Tell me about a time you handled a tight deadline.",sug:"Use your own real example. Start with the situation and the deadline, then what you did, then the result.",tip:"Keep it under two minutes and end on the outcome.",src:"Your resume and the job description (sample)"},
-{who:"You",text:"(You answer with your own example.)"},
-{who:"Interviewer",text:"Which tools do you use to stay organised?",sug:"Name the tools you have actually used, and one habit that shows how you use them.",tip:"Be specific. Don't list tools you haven't used.",src:"Candidate profile (sample)"}];
+var CANDIDATE=[["Candidate","Sample profile (fictional)"],["Role","Virtual Assistant (sample job post)"],["Background","8 years in office administration and customer support"],["Uploaded","Resume, job description, notes"]];
+var INT=said([
+{who:"Interviewer",text:"Tell me a little about yourself.",sug:"I've spent eight years in office administration and customer support, most recently coordinating schedules, reports and supplier follow-ups for a team of twenty. I'm organised, calm under deadlines, and I'm now looking for a remote virtual assistant role where I can take work off a busy manager's plate.",tip:"Past, present, then why this role. Under a minute.",src:"Resume and job description (sample)"},
+{who:"Interviewer",text:"Tell me about a time you handled a tight deadline.",sug:"Last quarter our manager needed a client report moved up by two days. I split it into sections, got the data owners to send their numbers by noon, and built the report that afternoon. It went out a day early and the client renewed their contract.",tip:"Situation, action, result. End on the outcome.",src:"Resume: Office Coordinator role (sample)"},
+{who:"Interviewer",text:"Which tools do you use to stay organised?",sug:"I live in Google Workspace and Trello. Every morning I turn new emails into Trello cards with due dates, and I block time in Google Calendar for the two most important tasks, so nothing slips.",tip:"Name real tools, then one habit that shows how you use them.",src:"Candidate profile: skills (sample)"},
+{who:"Interviewer",text:"Why should we hire you?",sug:"You need someone who can keep your inbox, calendar and follow-ups under control without being chased. That's exactly what I've done for eight years, and I can start right away and adapt to your tools in the first week.",tip:"Tie your strengths to their needs from the job post.",src:"Job description: key requirements (sample)"}],"You");
 function pvScripto(box){
  var mode="Call Center",step=-1,auto=null,secs=0,clock=null;
  box.innerHTML='<div class="pvwin"><div class="pvbar"><i></i><i></i><i></i><span>Scripto AI &middot; interface preview with a mock call</span></div><div class="pvbody"><div class="pvtabs"></div><dl class="sco"></dl><div class="scall"><span class="rec"></span><span class="wave"><i></i><i></i><i></i><i></i><i></i></span><span class="cst">Mic and call audio: ready</span><b class="ctime">00:00</b></div><div class="sgrid"><div class="sthread"></div><div class="sside"><div class="slab">Suggested answer</div><div class="ssug"></div><div class="stip"></div><div class="ssrc"></div></div></div><div class="pvctl"><button class="btn" type="button" data-a="play">&#9654; Play mock call</button><button class="btn" type="button" data-a="next">Next line &#9656;</button><button class="btn" type="button" data-a="reset">Reset</button></div><p class="pvnote"></p></div></div>';
@@ -796,11 +796,11 @@ function pvScripto(box){
   if(step<0)th.appendChild(el("p","pvhint","Press Next line to play the sample conversation."));
   for(var i=0;i<=step;i++){var l=d[i],mine=(l.who==="Agent"||l.who==="You"),m=el("div","sm "+(mine?"me":"them"));m.appendChild(el("small","",l.who));m.appendChild(el("span","",l.text));th.appendChild(m)}
   th.scrollTop=th.scrollHeight;
-  var cur=step>=0?d[step]:null;if(cur&&!cur.sug&&mode==="Call Center"){for(var j=step;j>=0;j--){if(d[j].sug){cur=d[j];break}}}
-  if(cur&&cur.sug){sug.textContent=cur.sug;sug.classList.remove("mute");tip.textContent=cur.tip;src.textContent="Source: "+cur.src}
-  else{sug.textContent=cur?"This is your own line, so no suggestion is needed.":"Waiting for the first line...";sug.classList.add("mute");tip.textContent="";src.textContent=""}
+  var cur=step>=0?d[step]:null,readOut=!!(cur&&cur.read);if(readOut){for(var j=step;j>=0;j--){if(d[j].sug){cur=d[j];break}}}
+  if(cur&&cur.sug){sug.textContent=cur.sug;sug.classList.remove("mute");tip.textContent=readOut?"✓ "+(mode==="Call Center"?"The agent read this answer word for word.":"You practised saying this answer."):cur.tip;src.textContent="Source: "+cur.src}
+  else{sug.textContent="Waiting for the first line...";sug.classList.add("mute");tip.textContent="";src.textContent=""}
   nx.disabled=step>=d.length-1;
-  note.textContent=mode==="Call Center"?"Sample dialogue with a fictional company. In the real app the microphone and the call audio are transcribed as two separate streams, and only transcript text is stored, not audio.":"Interview Assistant is for ethical mock-interview practice, using your own profile, job description and resume."}
+  note.textContent=mode==="Call Center"?"Sample dialogue with a fictional company. In the real app the microphone and the call audio are transcribed as two separate streams, and only transcript text is stored, not audio.":"Mock interview practice: the AI hears each question and writes a complete answer from the candidate's resume and the job post, so they can practise saying real, strong answers out loud. Sample candidate and job."}
  box.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("[data-a]"),a=t&&t.getAttribute("data-a");if(a==="play")play();if(a==="next"&&step<data().length-1){stop();step++;draw()}if(a==="reset"){stop();step=-1;secs=0;$(".ctime",box).textContent="00:00";draw()}});
  draw()}
 
