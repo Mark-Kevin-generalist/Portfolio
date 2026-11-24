@@ -269,6 +269,22 @@ h1 .ln:nth-child(2) span{animation-delay:.15s}h1 .ln:nth-child(3) span{animation
 .pjtabs{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
 .badge.soon{border-color:var(--rose);color:var(--rose);background:rgba(var(--r),.1)}
 .badge.live{border-color:#5fd4a0;color:#5fd4a0}
+/* Projects section only: richer wine-to-gold spotlight so it stands out within the page theme */
+#projects{border-color:rgba(var(--g),.45);background:radial-gradient(55% 45% at 88% 0%,rgba(var(--g),.18),transparent 70%),radial-gradient(50% 50% at 0% 100%,rgba(var(--r),.16),transparent 70%),linear-gradient(165deg,#2b0d14 0%,#1c080c 48%,#120608 100%);box-shadow:inset 0 1px 0 rgba(var(--g),.28),0 0 70px rgba(var(--w),.35)}
+#projects::before{opacity:.75}
+#projects>h2{background:linear-gradient(100deg,var(--cream) 0%,var(--gold) 55%,var(--rose) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+#projects>.lead{color:var(--cream);opacity:.85}
+#projects .pj{background:linear-gradient(160deg,rgba(var(--g),.08),rgba(var(--w),.22));border-color:rgba(var(--g),.28);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#projects .pj:hover{transform:translateY(-2px);border-color:rgba(var(--g),.7)}
+#projects .pj.on{background:linear-gradient(160deg,rgba(var(--g),.22),rgba(var(--w),.45));border-color:var(--gold);box-shadow:0 0 0 1px rgba(var(--g),.35),0 12px 34px rgba(var(--w),.45),0 0 28px rgba(var(--g),.18)}
+#projects .pj.on b{color:var(--gold)}
+#projects .pjinfo h3{color:var(--gold)}
+#projects .pjnote{background:rgba(var(--g),.1);border-left-color:var(--rose)}
+#projects .chips span{border-color:rgba(var(--g),.35);background:rgba(var(--g),.06)}
+#projects .pvwin{border-color:rgba(var(--g),.4);box-shadow:0 0 0 1px rgba(var(--g),.12),0 24px 60px rgba(0,0,0,.45),0 0 50px rgba(var(--w),.3)}
+#projects .pvbar{background:linear-gradient(90deg,rgba(var(--w),.55),rgba(var(--g),.12))}
+#projects .pvbar i:nth-child(1){background:#e5484d}#projects .pvbar i:nth-child(2){background:#e2bf7a}#projects .pvbar i:nth-child(3){background:#5fd4a0}
+@media(prefers-reduced-motion:reduce){#projects .pj:hover{transform:none}}
 /* Scripto: app preview GIF, company card and live call bar */
 .sgif{margin:0 0 12px}.sgif img{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;border:1px solid var(--line);background:#141010}
 .sgif figcaption{margin-top:6px;font-size:12.5px;color:var(--mute)}
